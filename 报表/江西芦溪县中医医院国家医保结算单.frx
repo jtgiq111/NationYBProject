@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="04/12/2018 10:25:34" ReportInfo.Modified="09/27/2021 15:05:47" ReportInfo.CreatorVersion="2013.2.5.0">
+  <Dictionary>
+    <XmlDataConnection Name="Connection" ConnectionString="rijcmlqmmfdjkQxfe1iwShBNGpudynfVYBiXv5CcMx43K81XaS1pUK4DJ9ahRlHfPulTCcZE3SyvTM/6In8sYNrcdIwQg==">
+      <TableDataSource Name="cmd" DataType="System.Int32" Enabled="true" TableName="cmd">
+        <Column Name="dwmc" DataType="System.String"/>
+        <Column Name="djhin" DataType="System.String"/>
+        <Column Name="jzlsh" DataType="System.String"/>
+        <Column Name="sysdate" DataType="System.DateTime"/>
+        <Column Name="xm" DataType="System.String"/>
+        <Column Name="xb" DataType="System.String"/>
+        <Column Name="kh" DataType="System.String"/>
+        <Column Name="yllb" DataType="System.String"/>
+        <Column Name="yldylb" DataType="System.String"/>
+        <Column Name="khyh" DataType="System.String"/>
+        <Column Name="zh" DataType="System.String"/>
+        <Column Name="khm" DataType="System.String"/>
+        <Column Name="tcqh" DataType="System.String"/>
+        <Column Name="ryrq" DataType="System.DateTime"/>
+        <Column Name="cyrq" DataType="System.DateTime"/>
+        <Column Name="zyts" DataType="System.Int32"/>
+        <Column Name="bzbm" DataType="System.String"/>
+        <Column Name="bzmc" DataType="System.String"/>
+        <Column Name="yljgmc" DataType="System.String"/>
+        <Column Name="yljgdj" DataType="System.String"/>
+        <Column Name="yljgbh" DataType="System.String"/>
+        <Column Name="ylfze" DataType="System.Decimal"/>
+        <Column Name="tcjjzf" DataType="System.Decimal"/>
+        <Column Name="qfbzfy" DataType="System.Decimal"/>
+        <Column Name="ylzlfy" DataType="System.Decimal"/>
+        <Column Name="blzlfy" DataType="System.Decimal"/>
+        <Column Name="cxjfy" DataType="System.Decimal"/>
+        <Column Name="zffy" DataType="System.Decimal"/>
+        <Column Name="jjjmzcwkbxfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="grzhye" DataType="System.Decimal"/>
+        <Column Name="gwybzzf" DataType="System.Decimal" PropName="bntczflj"/>
+        <Column Name="tcjjzf1" DataType="System.Decimal"/>
+        <Column Name="qfxje" DataType="System.Decimal" PropName="bctczhfy"/>
+        <Column Name="bctczhfy1" Enabled="false" DataType="System.String"/>
+        <Column Name="bndezflj" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="jmdbydje" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="jmdbedje" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="ecbcje" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="bcbxzyqfx" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="dejjzf" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="dejjzf1" Enabled="false" DataType="System.String"/>
+        <Column Name="jbbcfwnfyzfje" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="jbbcbxbczfje" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="qybcylbxjjzf" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="qybcylbxjjzf1" Enabled="false" DataType="System.String"/>
+        <Column Name="mzjzfy_mz" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="mzjzfy_zy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="mzjzfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="mzjzfy1" Enabled="false" DataType="System.String"/>
+        <Column Name="bnzftdjjfylj" Enabled="false" DataType="System.String"/>
+        <Column Name="zftdjjfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="zftdjjfy1" Enabled="false" DataType="System.String"/>
+        <Column Name="bcgrfdfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="xjzf" DataType="System.Decimal"/>
+        <Column Name="zhzf" DataType="System.Decimal"/>
+        <Column Name="yyfdfy" DataType="System.Decimal"/>
+        <Column Name="gwybz" DataType="System.String" PropName="Column"/>
+        <Column Name="rylb" DataType="System.String" PropName="Column1"/>
+        <Column Name="tel" DataType="System.String" PropName="Column2"/>
+        <Column Name="idcard" DataType="System.String" PropName="Column3"/>
+        <Column Name="jsid" DataType="System.String" PropName="Column4"/>
+        <Column Name="rysflb" DataType="System.String" PropName="Column5"/>
+        <Column Name="xz" DataType="System.String" PropName="Column6"/>
+        <Column Name="kb" DataType="System.String" PropName="Column7"/>
+        <Column Name="zych" DataType="System.String" PropName="Column8"/>
+        <Column Name="jssj" DataType="System.String" PropName="Column9"/>
+        <Column Name="cyzd" DataType="System.String" PropName="Column"/>
+        <Column Name="qybcylzf" DataType="System.Decimal" PropName="Column"/>
+        <Column Name="qtjjzf" DataType="System.Decimal" PropName="Column1"/>
+        <Column Name="yljzjjzf" DataType="System.Decimal" PropName="Column"/>
+        <Column Name="dbjjzf" DataType="System.Decimal" PropName="Column"/>
+        <Column Name="csrq" DataType="System.String" PropName="Column"/>
+        <Column Name="xmmc" DataType="System.String" PropName="Column"/>
+        <Column Name="xmje" DataType="System.Decimal" PropName="Column"/>
+        <Column Name="xmjlje" DataType="System.Decimal" PropName="Column"/>
+        <Column Name="xmylje" DataType="System.Decimal" PropName="Column"/>
+        <Column Name="xmzfje" DataType="System.Decimal" PropName="Column"/>
+        <Column Name="xmqtje" DataType="System.Decimal" PropName="Column"/>
+        <Column Name="jbr" DataType="System.String" PropName="Column"/>
+        <Column Name="zbxje" DataType="System.Decimal" PropName="Column"/>
+      </TableDataSource>
+    </XmlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="220" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" FirstPageSource="15" OtherPagesSource="15">
+    <PageHeaderBand Name="PageHeader1" Width="831.6" Height="349.65">
+      <TableObject Name="Table1" Left="18.9" Top="47.25" Width="758" Height="302.4">
+        <TableColumn Name="Column1" Width="85.05"/>
+        <TableColumn Name="Column2" Width="47.25"/>
+        <TableColumn Name="Column3" Width="37.8"/>
+        <TableColumn Name="Column4" Width="1"/>
+        <TableColumn Name="Column5" Width="56.7"/>
+        <TableColumn Name="Column6" Width="47.25"/>
+        <TableColumn Name="Column7"/>
+        <TableColumn Name="Column8" Width="75.6"/>
+        <TableColumn Name="Column9" Width="57.7"/>
+        <TableColumn Name="Column10" Width="56.7"/>
+        <TableColumn Name="Column11" Width="47.25"/>
+        <TableColumn Name="Column12" Width="75.6"/>
+        <TableColumn Name="Column13" Width="103.95"/>
+        <TableRow Name="Row1" Height="37.8">
+          <TableCell Name="Cell1" Border.Lines="All" Text="机构编码" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell2" Border.Lines="All" Text="[cmd.yljgbh]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell3" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell4" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell5" Border.Lines="All" Text="医保结算级别" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell26" Border.Lines="All" Text="[cmd.yljgdj]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell31" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell36" Border.Lines="All" Text="机构名称" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell41" Border.Lines="All" Text="[cmd.yljgmc]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="5"/>
+          <TableCell Name="Cell46" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell221" Border.Lines="All" HorzAlign="Right" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell222" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell223" Border.Lines="All" HorzAlign="Right" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row2" Height="47.25">
+          <TableCell Name="Cell6" Border.Lines="All" Text="姓名" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell7" Border.Lines="All" Text="[cmd.xm]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell8" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell9" Border.Lines="All" Text="性别" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell10" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell27" Border.Lines="All" Text="[cmd.xb]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell32" Border.Lines="All" Text="出生日期" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell37" Border.Lines="All" Text="[cmd.csrq]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell42" Border.Lines="All" Text="人员类别" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell47" Border.Lines="All" Text="[cmd.rylb]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell224" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell225" Border.Lines="All" Text="公务员标志" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell226" Border.Lines="All" Text="[cmd.gwybz]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row3" Height="37.8">
+          <TableCell Name="Cell11" Border.Lines="All" Text="单位名称" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell12" Border.Lines="All" Text="[cmd.dwmc]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="6"/>
+          <TableCell Name="Cell13" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell14" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell15" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell28" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell33" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell38" Border.Lines="All" Text="联系电话" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell43" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell48" Border.Lines="All" Text="[cmd.tel]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell227" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell228" Border.Lines="All" Text="人员身份类别" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell229" Border.Lines="All" Text="[cmd.rysflb]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row4" Height="28.35">
+          <TableCell Name="Cell16" Border.Lines="All" Text="结算ID" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell17" Border.Lines="All" Text="[cmd.jsid]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell18" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell19" Border.Lines="All" Text="住院号" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell20" Border.Lines="All" Text="住院号" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell29" Border.Lines="All" Text="[cmd.jzlsh]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell34" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell39" Border.Lines="All" Text="医疗类别" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell44" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell49" Border.Lines="All" Text="[cmd.yllb]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell230" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell231" Border.Lines="All" Text="住院天数" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell232" Border.Lines="All" Text="[cmd.zyts]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row5" Height="47.25">
+          <TableCell Name="Cell21" Border.Lines="All" Text="身份证号" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell22" Border.Lines="All" Text="[cmd.idcard]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="6"/>
+          <TableCell Name="Cell23" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell24" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell25" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell30" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell35" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell40" Border.Lines="All" Text="险种" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell45" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell50" Border.Lines="All" Text="[cmd.xz]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell233" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell234" Border.Lines="All" Text="参保医保区划" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell235" Border.Lines="All" Text="[cmd.tcqh]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row6" Height="37.8">
+          <TableCell Name="Cell51" Border.Lines="All" Text="科别" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell52" Border.Lines="All" Text="[cmd.kb]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell53" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell54" Border.Lines="All" Text="住院天数" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell55" Border.Lines="All" Text="床号" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell56" Border.Lines="All" Text="[cmd.zych]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell57" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell58" Border.Lines="All" Text="入院日期" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell59" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell60" Border.Lines="All" Text="[cmd.ryrq]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell236" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell237" Border.Lines="All" Text="出院日期" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell238" Border.Lines="All" Text="[cmd.cyrq]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row7" Height="37.8">
+          <TableCell Name="Cell61" Border.Lines="All" Text="入院主要诊断" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell62" Border.Lines="All" Text="[cmd.bzmc]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="4"/>
+          <TableCell Name="Cell63" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell64" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell65" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell66" Border.Lines="All" Text="出院主要诊断" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell67" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell68" Border.Lines="All" Text="[cmd.cyzd]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell69" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell70" Border.Lines="All" Text="结算时间" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell239" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell240" Border.Lines="All" Text="[cmd.jssj]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell241" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row8" Height="28.35">
+          <TableCell Name="Cell71" Border.Lines="All" Text="项目名称" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell72" Border.Lines="All" Text="金额" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="4"/>
+          <TableCell Name="Cell73" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell74" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell75" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell76" Border.Lines="All" Text="符合政策范围" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell77" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell78" Border.Lines="All" Text="先行自付" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell79" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell80" Border.Lines="All" Text="全自费" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell242" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell243" Border.Lines="All" Text="超限价" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell244" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+      </TableObject>
+      <TextObject Name="Text1" Top="18.9" Width="803.25" Height="28.35" Text="江西萍乡市医疗保险医疗费用结算单" HorzAlign="Center" Font="宋体, 16pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="353.65" Width="831.6" Height="28.35" Guides="850.5" DataSource="cmd">
+      <TableObject Name="Table3" Left="18.9" Width="758" Height="28.35">
+        <TableColumn Name="Column27" Width="85.05"/>
+        <TableColumn Name="Column28" Width="47.25"/>
+        <TableColumn Name="Column29" Width="18.9"/>
+        <TableColumn Name="Column30" Width="1"/>
+        <TableColumn Name="Column31" Width="75.6"/>
+        <TableColumn Name="Column32"/>
+        <TableColumn Name="Column33" Width="47.25"/>
+        <TableColumn Name="Column34"/>
+        <TableColumn Name="Column35" Width="67.15"/>
+        <TableColumn Name="Column36" Width="56.7"/>
+        <TableColumn Name="Column37" Width="47.25"/>
+        <TableColumn Name="Column38"/>
+        <TableColumn Name="Column39" Width="47.25"/>
+        <TableColumn Name="Column40"/>
+        <TableRow Name="Row48" Height="28.35">
+          <TableCell Name="Cell629" Border.Lines="All" Text="[cmd.xmmc]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell630" Border.Lines="All" Text="[cmd.xmje]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="4"/>
+          <TableCell Name="Cell631" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell632" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell633" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell634" Border.Lines="All" Text="[cmd.xmjlje]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell635" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell636" Border.Lines="All" Text="[cmd.xmylje]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell637" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell638" Border.Lines="All" Text="[cmd.xmzfje]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell639" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell640" Border.Lines="All" Text="[cmd.xmqtje]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell641" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell642" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="386" Width="831.6" Height="255.15">
+      <TableObject Name="Table2" Left="18.9" Top="18.9" Width="760.46" Height="196.42">
+        <TableColumn Name="Column14" Width="85.05"/>
+        <TableColumn Name="Column15" Width="47.25"/>
+        <TableColumn Name="Column16" Width="38.8"/>
+        <TableColumn Name="Column17" Width="1.46"/>
+        <TableColumn Name="Column18" Width="94.5"/>
+        <TableColumn Name="Column19" Width="113.4"/>
+        <TableColumn Name="Column20"/>
+        <TableColumn Name="Column21" Width="1"/>
+        <TableColumn Name="Column22" Width="48.25"/>
+        <TableColumn Name="Column23" Width="85.05"/>
+        <TableColumn Name="Column24"/>
+        <TableColumn Name="Column25" Width="9.45"/>
+        <TableColumn Name="Column26" Width="103.95"/>
+        <TableRow Name="Row30" Height="25.36">
+          <TableCell Name="Cell395" Border.Lines="All" Text="起付线" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell396" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell397" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell398" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell399" Border.Lines="All" Text="[cmd.qfbzfy]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell400" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell401" Border.Lines="All" Text="基本统筹基金支付" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="4"/>
+          <TableCell Name="Cell402" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell403" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell404" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell405" Border.Lines="All" Text="[cmd.tcjjzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell406" Border.Lines="All" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell407" Border.Lines="All" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row31" Height="25.36">
+          <TableCell Name="Cell408" Border.Lines="All" Text="公务员补助支付" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="4"/>
+          <TableCell Name="Cell409" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell410" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell411" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell412" Border.Lines="All" Text="[cmd.gwybzzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell413" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell414" Border.Lines="All" Text="企业补充医疗支付" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="4"/>
+          <TableCell Name="Cell415" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell416" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell417" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell418" Border.Lines="All" Text="[cmd.qybcylzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell419" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell420" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row32" Height="25.36">
+          <TableCell Name="Cell421" Border.Lines="All" Text="大病基金支付" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="4"/>
+          <TableCell Name="Cell422" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell423" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell424" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell425" Border.Lines="All" Text="[cmd.dbjjzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="2"/>
+          <TableCell Name="Cell426" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell427" Border.Lines="All" Text="医疗救助基金支付" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="4"/>
+          <TableCell Name="Cell428" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell429" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell430" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell431" Border.Lines="All" Text="[cmd.yljzjjzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell432" Border.Lines="All" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell433" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row33" Height="25.36">
+          <TableCell Name="Cell434" Border.Lines="All" Text="个人帐户支付" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell435" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell436" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell437" Border.Lines="All" Text="[cmd.zhzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell438" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell439" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell440" Border.Lines="All" Text="其他基金支付" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="4"/>
+          <TableCell Name="Cell441" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell442" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell443" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell444" Border.Lines="All" Text="[cmd.qtjjzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell445" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell446" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row34" Height="25.36">
+          <TableCell Name="Cell447" Border.Lines="All" Text="个人现金支出" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell448" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell449" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell450" Border.Lines="All" Text="[cmd.xjzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell451" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell452" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell453" Border.Lines="All" Text="医院负担金额" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="4"/>
+          <TableCell Name="Cell454" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell455" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell456" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell457" Border.Lines="All" Text="[cmd.yyfdfy]" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="3"/>
+          <TableCell Name="Cell458" Border.Lines="All" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell459" Border.Lines="All" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row35" Height="44.26">
+          <TableCell Name="Cell460" Border.Lines="All" Text="本次就医：总费用[cmd.ylfze]元，基金支付总额[cmd.zbxje]元，个人账户支付[cmd.zhzf]元,个人现金支付[cmd.xjzf]元。" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="13"/>
+          <TableCell Name="Cell461" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell462" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell463" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell464" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell465" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell466" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell467" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell468" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell469" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell470" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell471" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell472" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row36" Height="25.36">
+          <TableCell Name="Cell473" Border.Lines="All" Text="注:1、其他基金支付包含军转、财政、慈善、商保等支付来源。" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt" ColSpan="13"/>
+          <TableCell Name="Cell474" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell475" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell476" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell477" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell478" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell479" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell480" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell481" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell482" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell483" Border.Lines="All" VertAlign="Center" Font="宋体, 11pt, style=Bold"/>
+          <TableCell Name="Cell484" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell485" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+      </TableObject>
+      <TextObject Name="Text2" Left="18.9" Top="217.35" Width="756" Height="28.35" Text="批准:       复核:         审核:        经办:[cmd.jbr]         领款人:         联系电话:        打印日期:[cmd.jssj]     病种:  [cmd.bzmc]       " VertAlign="Center" Font="宋体, 9pt"/>
+    </ReportSummaryBand>
+  </ReportPage>
+</Report>

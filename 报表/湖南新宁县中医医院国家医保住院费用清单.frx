@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="12/29/2015 10:32:05" ReportInfo.Modified="09/29/2021 17:39:11" ReportInfo.CreatorVersion="2013.2.5.0">
+  <Dictionary>
+    <XmlDataConnection Name="Connection" ConnectionString="rijcmlqmmfdjkQxfe1iwShBNGpudwrFbrvlycuxqTOe/iZXb8g=">
+      <TableDataSource Name="cmd1" Alias="cmd" DataType="System.Int32" Enabled="true" TableName="cmd">
+        <Column Name="yyxmdm" DataType="System.String"/>
+        <Column Name="yyxmmc" DataType="System.String"/>
+        <Column Name="gg" DataType="System.String"/>
+        <Column Name="sl" DataType="System.String"/>
+        <Column Name="dj" DataType="System.String"/>
+        <Column Name="je" DataType="System.String"/>
+        <Column Name="bxbl" DataType="System.String"/>
+        <Column Name="b5sfnm" DataType="System.String"/>
+        <Column Name="bxje" DataType="System.String"/>
+      </TableDataSource>
+    </XmlDataConnection>
+    <Parameter Name="fyrq" DataType="System.String"/>
+    <Parameter Name="zyh" DataType="System.String"/>
+    <Parameter Name="ryrq" DataType="System.String"/>
+    <Parameter Name="cyrq" DataType="System.String"/>
+    <Parameter Name="hjts" DataType="System.String"/>
+    <Parameter Name="hzxm" DataType="System.String"/>
+    <Parameter Name="xb" DataType="System.String"/>
+    <Parameter Name="nl" DataType="System.String"/>
+    <Parameter Name="rks" DataType="System.String"/>
+    <Parameter Name="cks" DataType="System.String"/>
+    <Parameter Name="yjze" DataType="System.String"/>
+    <Parameter Name="fyze" DataType="System.String"/>
+    <Parameter Name="comp" DataType="System.String"/>
+    <Total Name="SU" Expression="[cmd.je]" Evaluator="Data1" PrintOn="GroupFooter1" ResetOnReprint="true"/>
+    <Total Name="Total" Expression="[cmd.je]" Evaluator="Data1"/>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="75.6">
+      <TextObject Name="Text1" Left="-10.21" Top="-0.76" Width="727.65" Height="28.35" Text="[comp]患者费用明细单" HorzAlign="Center" VertAlign="Center" Font="宋体, 14pt, style=Bold"/>
+      <TextObject Name="Text2" Top="18.9" Width="330.75" Height="18.9" Text="费用日期:[fyrq]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text3" Top="37.8" Width="179.55" Height="18.9" Text="住 院 号:[zyh]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text4" Left="198.45" Top="37.8" Width="179.55" Height="18.9" Text="入院日期:[ryrq]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text5" Left="378" Top="37.8" Width="189" Height="18.9" Text="出院日期:[cyrq]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text6" Left="585.9" Top="37.8" Width="132.3" Height="18.9" Text="费用合计天数:[hjts]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text8" Top="56.7" Width="122.85" Height="18.9" Text="患者姓名:[hzxm]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text9" Left="132.3" Top="56.7" Width="94.5" Height="18.9" Text="性别:[xb]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text10" Left="245.7" Top="56.7" Width="94.5" Height="18.9" Text="年龄:[nl]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text11" Left="311.85" Top="56.7" Width="207.9" Height="18.9" Text="入院科室:[rks]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text12" Left="519.75" Top="56.7" Width="198.45" Height="18.9" Text="出院科室:[cks]" VertAlign="Center" Font="宋体, 9pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="79.6" Width="718.2" Height="28.35" Guides="0">
+      <TableObject Name="Table1" Width="728.95" Height="28.35">
+        <TableColumn Name="Column1" Width="72.76"/>
+        <TableColumn Name="Column2" Width="182.42"/>
+        <TableColumn Name="Column3" Width="69.39"/>
+        <TableColumn Name="Column4" Width="50.49"/>
+        <TableColumn Name="Column5" Width="101.6"/>
+        <TableColumn Name="Column6" Width="67.07"/>
+        <TableColumn Name="Column15"/>
+        <TableColumn Name="Column7" Width="119.07"/>
+        <TableRow Name="Row1" Height="28.35">
+          <TableCell Name="Cell1" Border.Lines="Top, Bottom" Border.Width="2" Text="收 费 项 目 编 码" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell2" Border.Lines="Top, Bottom" Border.Width="2" Text="收 费 项 目 名称" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell3" Border.Lines="Top, Bottom" Border.Width="2" Text="单价" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell4" Border.Lines="Top, Bottom" Border.Width="2" Text="数量" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell5" Border.Lines="Top, Bottom" Border.Width="2" Text="规  格" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell6" Border.Lines="Top, Bottom" Border.Width="2" Text="金额(元)" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell17" Border.Lines="Top, Bottom" Border.Width="2" Text="报销金额" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell7" Border.Lines="Top, Bottom" Border.Width="2" Text="报销比例" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <GroupHeaderBand Name="GroupHeader1" Top="111.95" Width="718.2" Condition="[cmd.b5sfnm]">
+      <DataBand Name="Data1" Top="115.95" Width="718.2" Height="30.23" Guides="0,9.45" DataSource="cmd1">
+        <TableObject Name="Table2" Width="728.16" Height="30.23">
+          <TableColumn Name="Column8" Width="80.62"/>
+          <TableColumn Name="Column9" Width="172.88"/>
+          <TableColumn Name="Column10" Width="69.3"/>
+          <TableColumn Name="Column11" Width="50.4"/>
+          <TableColumn Name="Column12" Width="103.39"/>
+          <TableColumn Name="Column13" Width="66.35"/>
+          <TableColumn Name="Column16"/>
+          <TableColumn Name="Column14" Width="119.07"/>
+          <TableRow Name="Row2" Height="30.23">
+            <TableCell Name="Cell8" VertAlign="Center" Font="Calibri, 9pt"/>
+            <TableCell Name="Cell9" Text="[cmd.yyxmmc]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+            <TableCell Name="Cell10" Text="[cmd.dj]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="4" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+            <TableCell Name="Cell11" Text="[cmd.sl]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="1" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" WordWrap="false" Font="宋体, 9pt"/>
+            <TableCell Name="Cell12" Text="[cmd.gg]" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 9pt"/>
+            <TableCell Name="Cell13" Text="[cmd.je]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+            <TableCell Name="Cell16" Text="[cmd.bxje]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+            <TableCell Name="Cell14" Text="[cmd.bxbl]" Format="Date" Format.Format="f" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 9pt"/>
+          </TableRow>
+        </TableObject>
+        <TextObject Name="Text19" Left="-0.75" Top="9.45" Width="82.41" Height="16.62" Text="[cmd.yyxmdm]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      </DataBand>
+      <GroupFooterBand Name="GroupFooter1" Top="150.18" Width="718.2" Height="28.35" Border.Lines="Bottom" KeepWithData="true" RepeatOnEveryPage="true">
+        <TextObject Name="Text18" Left="510.3" Width="94.5" Height="28.35" Text="小计:[SU]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+        <TextObject Name="Text13" Left="9.45" Width="160.65" Height="28.35" Text="收费类别：[cmd.b5sfnm]" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+      </GroupFooterBand>
+    </GroupHeaderBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="182.53" Width="718.2" Height="18.9">
+      <TextObject Name="Text15" Width="132.3" Height="18.9" Text="预交款总额:[yjze]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+      <TextObject Name="Text16" Left="179.55" Width="141.75" Height="18.9" Text="费用总额:[Total]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+      <TextObject Name="Text17" Left="444.15" Width="274.05" Height="18.9" Text="出院费用明细汇总清单请您妥善保管，以免遗失!" HorzAlign="Right" VertAlign="Center" Font="宋体, 9pt"/>
+    </ReportSummaryBand>
+  </ReportPage>
+</Report>

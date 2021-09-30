@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="04/12/2018 10:25:34" ReportInfo.Modified="09/27/2021 07:55:36" ReportInfo.CreatorVersion="2013.2.5.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+    /// &lt;summary&gt;
+    /// 金额大写转换
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;amnt&quot;&gt;金额&lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public string GetDX(decimal amnt)
+    {
+      string val = amnt.ToString(&quot;F2&quot;);
+      if (val == &quot;0.00&quot;)
+        return &quot;零圆&quot;;
+      string str = &quot;&quot;;
+      string[] str1 = { &quot;零&quot;, &quot;壹&quot;, &quot;贰&quot;, &quot;叁&quot;, &quot;肆&quot;, &quot;伍&quot;, &quot;陆&quot;, &quot;柒&quot;, &quot;捌&quot;, &quot;玖&quot; };
+      string[] str2 = { &quot;分&quot;, &quot;角&quot;, &quot;圆&quot;, &quot;拾&quot;, &quot;佰&quot;, &quot;仟&quot;, &quot;万&quot;, &quot;拾&quot;, &quot;佰&quot;, &quot;仟&quot;, &quot;亿&quot;, &quot;拾&quot;, &quot;佰&quot;, &quot;仟&quot; };
+      int index = 0;
+      for (int i = val.Length - 1; i &gt;= 0; i--)
+      {
+        if (val[i] == '.')
+          continue;
+        int n = int.Parse(val[i].ToString());
+        str = str1[n] + str2[index] + str;
+        index++;
+      }
+      str = str.Replace(&quot;零亿&quot;, &quot;亿&quot;);
+      str = str.Replace(&quot;零仟&quot;, &quot;零&quot;);
+      str = str.Replace(&quot;零佰&quot;, &quot;零&quot;);
+      str = str.Replace(&quot;零拾&quot;, &quot;零&quot;);
+      str = str.Replace(&quot;亿万&quot;, &quot;亿&quot;);
+      str = str.Replace(&quot;零零&quot;, &quot;零&quot;);
+      str = str.Replace(&quot;零万&quot;, &quot;万&quot;);
+      str = str.Replace(&quot;零仟&quot;, &quot;零&quot;);
+      str = str.Replace(&quot;零佰&quot;, &quot;零&quot;);
+      str = str.Replace(&quot;零拾&quot;, &quot;零&quot;);
+      str = str.Replace(&quot;零圆&quot;, &quot;圆&quot;);
+      str = str.Replace(&quot;零角&quot;, &quot;零&quot;);
+      str = str.Replace(&quot;零分&quot;, &quot;&quot;);
+      while (str.Contains(&quot;零零&quot;))
+        str = str.Replace(&quot;零零&quot;, &quot;零&quot;);
+      str = str.TrimEnd('零');
+      str = str.Replace(&quot;零圆&quot;, &quot;圆&quot;);
+      if (str.Length &gt; 2)
+      {
+        if (str.Substring(str.Length - 1, 1) == &quot;圆&quot;)
+          str = str + &quot;整&quot;;
+      }
+      while (str.Substring(0, 1) == &quot;圆&quot; || str.Substring(0, 1) == &quot;角&quot; || str.Substring(0, 1) == &quot;零&quot;)
+        str = str.Substring(1);
+      return str;
+    }
+    
+    public string GetXC(decimal amntCS,decimal amntBCS)
+    {
+      if(amntBCS==0)
+      {
+         return   &quot;0.0%&quot;;
+      }
+      else
+      {
+         decimal amnt= decimal.Round((amntCS/ amntBCS),2)*100;
+         return  amnt.ToString()+&quot;%&quot;;
+      }
+    }
+    public string GetXC2(decimal amntCS,decimal amntBCS)
+    {
+      if(amntBCS==0)
+      {
+        return   &quot;0.0%&quot;;
+      }
+      else
+      {
+        decimal amnt= decimal.Round(1-(amntCS/ amntBCS),2)*100;
+        return  amnt.ToString()+&quot;%&quot;;
+      }
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <XmlDataConnection Name="Connection" ConnectionString="rijcmlqmmfdjkQxfe1iwShBNGpudynfVYBiXv5CcMx43K81XaS1pUK4DJ9ahRlHfPulTCcZimjwl/C2E9DPdwEZfGK8ew==">
+      <TableDataSource Name="cmd" DataType="System.Int32" Enabled="true" TableName="cmd">
+        <Column Name="dwmc" Enabled="false" DataType="System.String"/>
+        <Column Name="djhin" Enabled="false" DataType="System.String"/>
+        <Column Name="jzlsh" Enabled="false" DataType="System.String"/>
+        <Column Name="sysdate" Enabled="false" DataType="System.DateTime"/>
+        <Column Name="xm" Enabled="false" DataType="System.String"/>
+        <Column Name="xb" Enabled="false" DataType="System.String"/>
+        <Column Name="kh" Enabled="false" DataType="System.String"/>
+        <Column Name="yllb" Enabled="false" DataType="System.String"/>
+        <Column Name="yldylb" Enabled="false" DataType="System.String"/>
+        <Column Name="khyh" Enabled="false" DataType="System.String"/>
+        <Column Name="zh" Enabled="false" DataType="System.String"/>
+        <Column Name="khm" Enabled="false" DataType="System.String"/>
+        <Column Name="tcqh" Enabled="false" DataType="System.String"/>
+        <Column Name="ryrq" Enabled="false" DataType="System.DateTime"/>
+        <Column Name="cyrq" Enabled="false" DataType="System.DateTime"/>
+        <Column Name="zyts" Enabled="false" DataType="System.Int32"/>
+        <Column Name="bzbm" Enabled="false" DataType="System.String"/>
+        <Column Name="bzmc" Enabled="false" DataType="System.String"/>
+        <Column Name="yljgmc" Enabled="false" DataType="System.String"/>
+        <Column Name="yljgdj" Enabled="false" DataType="System.String"/>
+        <Column Name="yljgbh" Enabled="false" DataType="System.String"/>
+        <Column Name="ylfze" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="tcjjzf" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="qfbzfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="ylzlfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="blzlfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="cxjfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="zffy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="jjjmzcwkbxfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="grzhye" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="bntczflj" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="tcjjzf1" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="bctczhfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="bctczhfy1" Enabled="false" DataType="System.String"/>
+        <Column Name="bndezflj" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="jmdbydje" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="jmdbedje" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="ecbcje" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="bcbxzyqfx" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="dejjzf" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="dejjzf1" Enabled="false" DataType="System.String"/>
+        <Column Name="jbbcfwnfyzfje" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="jbbcbxbczfje" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="qybcylbxjjzf" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="qybcylbxjjzf1" Enabled="false" DataType="System.String"/>
+        <Column Name="mzjzfy_mz" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="mzjzfy_zy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="mzjzfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="mzjzfy1" Enabled="false" DataType="System.String"/>
+        <Column Name="bnzftdjjfylj" Enabled="false" DataType="System.String"/>
+        <Column Name="zftdjjfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="zftdjjfy1" Enabled="false" DataType="System.String"/>
+        <Column Name="bcgrfdfy" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="xjzf" Enabled="false" DataType="System.Decimal"/>
+        <Column Name="bzname" DataType="System.String" PropName="zhzf"/>
+        <Column Name="je" DataType="System.Decimal" PropName="yyfdfy"/>
+        <Column Name="zlje" DataType="System.Decimal" PropName="Column"/>
+        <Column Name="zfje" DataType="System.Decimal" PropName="Column1"/>
+      </TableDataSource>
+    </XmlDataConnection>
+    <Parameter Name="tcfdjey" DataType="System.Decimal"/>
+    <Parameter Name="tcjjzf" DataType="System.Decimal"/>
+    <Parameter Name="gwybzjjzf" DataType="System.Decimal"/>
+    <Parameter Name="qybcylbxjjzf" DataType="System.Decimal"/>
+    <Parameter Name="defdjey" DataType="System.Decimal"/>
+    <Parameter Name="defdjee" DataType="System.Decimal"/>
+    <Parameter Name="defdjes" DataType="System.Decimal"/>
+    <Parameter Name="jrdbbxfdjey" DataType="System.Decimal"/>
+    <Parameter Name="jrdbbxfdjee" DataType="System.Decimal"/>
+    <Parameter Name="jrdbbxfdjes" DataType="System.Decimal"/>
+    <Parameter Name="jrdbbxfdzfy" DataType="System.Decimal"/>
+    <Parameter Name="jrdbbxfdzfe" DataType="System.Decimal"/>
+    <Parameter Name="jrdbbxfdzfs" DataType="System.Decimal"/>
+    <Parameter Name="ylfze" DataType="System.Decimal"/>
+    <Parameter Name="xjzf" DataType="System.Decimal" Expression="[xjzf]"/>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperHeight="357" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" FirstPageSource="15" OtherPagesSource="15">
+    <PageHeaderBand Name="PageHeader1" Width="793.8" Height="344.2">
+      <TextObject Name="Text1" Width="793.8" Height="47.25" Text="湖南省邵阳市医疗基金结算清单" HorzAlign="Center" VertAlign="Center" Font="宋体, 16pt, style=Bold"/>
+      <TextObject Name="Text3" Left="9.45" Top="189" Width="75.6" Height="18.9" Text="人员编号：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text4" Left="85.05" Top="189" Width="170.1" Height="18.9" Text="[grbh]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text5" Left="9.45" Top="207.9" Width="75.6" Height="18.9" Text="证件类型：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text6" Left="85.05" Top="207.9" Width="170.1" Height="18.9" Text="[zjlx]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text15" Left="9.45" Top="226.8" Width="75.6" Height="18.9" Text="险种类型：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text16" Left="85.05" Top="226.8" Width="170.1" Height="18.9" Text="[xzlx]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text17" Left="9.45" Top="245.7" Width="75.6" Height="18.9" Text="病种名称：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text18" Left="85.05" Top="245.7" Width="170.1" Height="18.9" Text="[bzmc]" VertAlign="Center" Font="宋体, 9pt"/>
+      <LineObject Name="Line1" Left="9.45" Top="340.2" Width="774.9" Border.ShadowWidth="6" Border.Width="1.6"/>
+      <TextObject Name="Text113" Top="47.25" Width="793.8" Height="28.35" Text="（医保经办机构报销）" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+      <TextObject Name="Text114" Left="9.45" Top="113.4" Width="132.3" Height="18.9" Text="定点医疗机构名称：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text115" Left="141.75" Top="113.4" Width="189" Height="18.9" Text="[ddylgjbh]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text116" Left="9.45" Top="132.3" Width="132.3" Height="18.9" Text="定点医疗机构代码：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text117" Left="141.75" Top="132.3" Width="189" Height="18.9" Text="[ddylgjmc]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text118" Left="340.2" Top="113.4" Width="122.85" Height="18.9" Text="结算流水号：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text119" Left="472.5" Top="113.4" Width="189" Height="18.9" Text="[jslsh]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text120" Left="340.2" Top="132.3" Width="122.85" Height="18.9" Text="医保结算等级：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text121" Left="472.5" Top="132.3" Width="103.95" Height="18.9" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text122" Top="85.05" Width="793.8" Height="18.9" Text="一、定点信息" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text123" Top="160.65" Width="793.8" Height="18.9" Text="二、人员信息" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text124" Left="255.15" Top="189" Width="75.6" Height="18.9" Text="姓名：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text125" Left="330.75" Top="189" Width="170.1" Height="18.9" Text="[xm]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text126" Left="255.15" Top="207.9" Width="75.6" Height="18.9" Text="证件号码：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text127" Left="330.75" Top="207.9" Width="170.1" Height="18.9" Text="[GMSFHM]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text128" Left="255.15" Top="226.8" Width="75.6" Height="18.9" Text="人员类别：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text129" Left="330.75" Top="226.8" Width="170.1" Height="18.9" Text="[yldylb]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text130" Left="255.15" Top="245.7" Width="75.6" Height="18.9" Text="入院日期：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text131" Left="330.75" Top="245.7" Width="170.1" Height="18.9" Text="[ryrq]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text132" Left="500.85" Top="189" Width="94.5" Height="18.9" Text="性别：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text133" Left="595.35" Top="189" Width="179.55" Height="18.9" Text="[xb]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text134" Left="500.85" Top="207.9" Width="94.5" Height="18.9" Text="城乡救助类型：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text135" Left="595.35" Top="207.9" Width="179.55" Height="18.9" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text136" Left="500.85" Top="226.8" Width="94.5" Height="18.9" Text="公/企补标志：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text137" Left="595.35" Top="226.8" Width="179.55" Height="18.9" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text138" Left="500.85" Top="245.7" Width="94.5" Height="18.9" Text="出院日期：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text139" Left="595.35" Top="245.7" Width="179.55" Height="18.9" Text="[cyrq]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text140" Left="9.45" Top="264.6" Width="75.6" Height="18.9" Text="年龄：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text141" Left="85.05" Top="264.6" Width="94.5" Height="18.9" Text="[nl]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text142" Left="179.55" Top="264.6" Width="113.4" Height="18.9" Text="城乡救助所属区：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text143" Left="292.95" Top="264.6" Width="103.95" Height="18.9" Text="[tcqh]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text144" Left="396.9" Top="264.6" Width="75.6" Height="18.9" Text="医疗类别：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text145" Left="472.5" Top="264.6" Width="103.95" Height="18.9" Text="[yllb]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text146" Left="576.45" Top="264.6" Width="66.15" Height="18.9" Text="参保地：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text147" Left="642.6" Top="264.6" Width="113.4" Height="18.9" Text="[tcqh]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text148" Left="-9.45" Top="302.4" Width="793.8" Height="18.9" Text="三、医疗费用构成信息" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text149" Top="315.85" Width="793.8" Height="28.35" Text="（一）按医疗收费项目（元）" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text187" Left="576.45" Top="132.3" Width="75.6" Height="18.9" Text="报销比例：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text188" Left="652.05" Top="132.3" Width="113.4" Height="18.9" Text="[jbylbxtcjjzfbl]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TableObject Name="Table5" Left="-9450" Top="-9450" Width="168.21" Height="18.9">
+        <TableColumn Name="Column17" Width="117.18"/>
+        <TableColumn Name="Column18" Width="51.03"/>
+        <TableRow Name="Row11">
+          <TableCell Name="Cell45" Text="项目类别" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell46" Text="金额" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+      <TextObject Name="Text189" Left="9.45" Top="283.5" Width="75.6" Height="18.9" Text="地址：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text190" Left="85.05" Top="283.5" Width="311.85" Height="18.9" Text="[hkdz]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text191" Left="396.9" Top="283.5" Width="75.6" Height="18.9" Text="流水号：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text192" Left="472.5" Top="283.5" Width="103.95" Height="18.9" Text="[zyh]" VertAlign="Center" Font="宋体, 9pt"/>
+    </PageHeaderBand>
+    <ColumnHeaderBand Name="ColumnHeader1" Top="348.2" Width="793.8" Height="18.9" Guides="0">
+      <TableObject Name="Table2" Left="9.45" Width="791.91" Height="18.9">
+        <TableColumn Name="Column5" Width="123.48"/>
+        <TableColumn Name="Column6" Width="76.23"/>
+        <TableColumn Name="Column19" Width="119.7"/>
+        <TableColumn Name="Column20" Width="75.6"/>
+        <TableColumn Name="Column21" Width="132.3"/>
+        <TableColumn Name="Column22" Width="75.6"/>
+        <TableColumn Name="Column23" Width="122.85"/>
+        <TableColumn Name="Column24"/>
+        <TableRow Name="Row2">
+          <TableCell Name="Cell5" Text="项目类别" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell6" Text="金额" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell47" Text="项目类别" Font="宋体, 9pt"/>
+          <TableCell Name="Cell48" Text="金额" Font="宋体, 9pt"/>
+          <TableCell Name="Cell49" Text="项目类别" Font="宋体, 9pt"/>
+          <TableCell Name="Cell50" Text="金额" Font="宋体, 9pt"/>
+          <TableCell Name="Cell51" Text="项目类别" Font="宋体, 9pt"/>
+          <TableCell Name="Cell52" Text="金额" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+    </ColumnHeaderBand>
+    <DataBand Name="Data1" Top="371.1" Width="198.45" Height="28.35" CanGrow="true" CanShrink="true" DataSource="cmd" Columns.Count="4">
+      <TableObject Name="Table1" Left="9.45" Width="187.09" Height="28.35">
+        <TableColumn Name="Column1" Width="126.62"/>
+        <TableColumn Name="Column2" Width="60.47"/>
+        <TableRow Name="Row1" Height="28.35">
+          <TableCell Name="Cell1" Text="[cmd.bzname]" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell2" Text="[cmd.je]" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="403.45" Width="793.8" Height="500.85">
+      <LineObject Name="Line2" Left="-9.45" Width="774.9" Border.ShadowWidth="6" Border.Width="1.6"/>
+      <LineObject Name="Line15" Left="9.45" Top="434.7" Width="774.9" Border.ShadowWidth="6" Border.Width="1.6"/>
+      <TextObject Name="Text108" Left="18.9" Top="481.95" Width="122.85" Height="18.9" Text="经办人：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text109" Left="170.1" Top="481.95" Width="122.85" Height="18.9" Text="复核人：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text110" Left="321.3" Top="481.95" Width="132.3" Height="18.9" Text="审核人：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text150" Left="481.95" Top="481.95" Width="122.85" Height="18.9" Text=" 审批人：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text151" Left="633.15" Top="481.95" Width="132.3" Height="18.9" Text="患者签字" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text152" Left="18.9" Top="444.15" Width="122.85" Height="18.9" Text="经办机构名称：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text153" Left="321.3" Top="444.15" Width="75.6" Height="18.9" Text="结算时间：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text154" Top="18.9" Width="793.8" Height="28.35" Text="（二）按医保费用类别（元）" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text155" Left="9.45" Top="47.25" Width="113.4" Height="18.9" Text="1、全自费金额：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text156" Left="122.85" Top="47.25" Width="103.95" Height="18.9" Text="[zffy]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text157" Left="255.15" Top="47.25" Width="132.3" Height="18.9" Text="2、超限价自费金额：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text158" Left="387.45" Top="47.25" Width="103.95" Height="18.9" Text="[cxjfy]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text159" Left="519.75" Top="47.25" Width="113.4" Height="18.9" Text="3、先行自付金额" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text160" Left="633.15" Top="47.25" Width="103.95" Height="18.9" Text="[xxzfje]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text161" Left="9.45" Top="66.15" Width="189" Height="18.9" Text="4、符合基本医保政策范围金额：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text162" Left="198.45" Top="66.15" Width="103.95" Height="18.9" Text="[fhjbylfy]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text163" Left="415.8" Top="66.15" Width="132.3" Height="18.9" Text="其中：起付线：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text164" Left="548.1" Top="66.15" Width="103.95" Height="18.9" Text="[qfbzfy]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text165" Left="9.45" Top="85.05" Width="189" Height="18.9" Text="合计医疗总费用（元）：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text166" Left="198.45" Top="85.05" Width="103.95" Height="18.9" Text="[ylfze]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text167" Top="113.4" Width="793.8" Height="18.9" Text="四、医疗保障统筹基金支付信息：" HorzAlign="Center" Font="宋体, 9pt"/>
+      <TableObject Name="Table4" Left="9.45" Top="132.3" Width="774.9" Height="132.3" Border.Lines="All">
+        <TableColumn Name="Column13" Width="189"/>
+        <TableColumn Name="Column14" Width="198.45"/>
+        <TableColumn Name="Column15" Width="189"/>
+        <TableColumn Name="Column16" Width="198.45"/>
+        <TableRow Name="Row4">
+          <TableCell Name="Cell13" Border.Lines="All" Text="基金支付类型" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell14" Border.Lines="All" Text="基金支付金额（元）" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell15" Border.Lines="All" Text="基金支付类型" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell16" Border.Lines="All" Text="基金支付金额（元）" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row5">
+          <TableCell Name="Cell18" Border.Lines="All" Text="基本医疗保险统筹" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell19" Border.Lines="All" Text="[tcjjzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell20" Border.Lines="All" Text="职工医保大病统筹" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell21" Border.Lines="All" Text="[dejjzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row6">
+          <TableCell Name="Cell23" Border.Lines="All" Text="公务员医疗补助" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell24" Border.Lines="All" Text="[gwybzjjzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell25" Border.Lines="All" Text="企业补充医疗保险" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell26" Border.Lines="All" Text="[qybcylbxjjzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row7">
+          <TableCell Name="Cell28" Border.Lines="All" Text="大病保险" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell29" Border.Lines="All" Text="[dbjjzf]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell30" Border.Lines="All" Text="生育基金" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell31" Border.Lines="All" Text="[syjj]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row8">
+          <TableCell Name="Cell33" Border.Lines="All" Text="医疗救助" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell34" Border.Lines="All" Text="[mzjzfy]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell35" Border.Lines="All" Text="健康扶贫" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell36" Border.Lines="All" Text="[jkfp]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row9">
+          <TableCell Name="Cell37" Border.Lines="All" Text="离休人员医疗保障" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell38" Border.Lines="All" Text="[lxryylbz]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell39" Border.Lines="All" Text="一至六级残疾军人医疗补助基金" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell40" Border.Lines="All" Text="[cjjrylbzjj]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row10">
+          <TableCell Name="Cell41" Border.Lines="All" Text="职工医保补充保险" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell42" Border.Lines="All" Text="[zgybbcbx]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell43" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell44" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+      <TextObject Name="Text168" Top="264.6" Width="793.8" Height="18.9" Text="五、费用结算信息" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 9pt"/>
+      <TextObject Name="Text172" Left="9.45" Top="311.85" Width="189" Height="18.9" Text="2、个人负担总额（元）：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text173" Left="198.45" Top="311.85" Width="103.95" Height="18.9" Text="[grfdzje]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text174" Left="9.45" Top="330.75" Width="189" Height="18.9" Text="   其中：个人现金支出（元）：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text175" Left="198.45" Top="330.75" Width="103.95" Height="18.9" Text="[xjzf]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text169" Left="9.45" Top="292.95" Width="236.25" Height="18.9" Text="1、医疗保障统筹基金支付总额（元）：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text170" Left="245.7" Top="292.95" Width="103.95" Height="18.9" Text="[jjzfze]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text176" Left="9.45" Top="349.65" Width="189" Height="18.9" Text="         个人账户支出（元）：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text177" Left="198.45" Top="349.65" Width="103.95" Height="18.9" Text="[zhzf]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text178" Left="9.45" Top="368.55" Width="255.15" Height="18.9" Text="         其中：个人账户共济支出（元）：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text179" Left="264.6" Top="368.55" Width="103.95" Height="18.9" Text="[grzhgjzfje]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text180" Left="9.45" Top="387.45" Width="189" Height="18.9" Text="3、其他支付（元）：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text181" Left="198.45" Top="387.45" Width="103.95" Height="18.9" Text="[qtjjzf]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text182" Left="9.45" Top="406.35" Width="189" Height="18.9" Text="   其中：医院负担金额(元）：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text183" Left="198.45" Top="406.35" Width="103.95" Height="18.9" Text="[yyfdfy]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text184" Left="340.2" Top="349.65" Width="207.9" Height="18.9" Text="本次支出后个人账户余额（元）：" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text185" Left="548.1" Top="349.65" Width="103.95" Height="18.9" Text="[bcjshzhye]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text186" Left="396.9" Top="444.15" Width="189" Height="18.9" Text="[fyjssj]" VertAlign="Center" Font="宋体, 9pt"/>
+    </ReportSummaryBand>
+  </ReportPage>
+</Report>
