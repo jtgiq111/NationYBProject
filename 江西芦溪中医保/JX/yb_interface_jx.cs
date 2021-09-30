@@ -84,7 +84,7 @@ namespace yb_interfaces
         /// <param name="pSignBuff">当函数执行成功时，该输出参数为数字签名</param>
         /// <param name="nSignBuffLen">对应pSignBuff内存分配长度，建议4096</param>
         /// <returns></returns>
-        [DllImport("SSCard.dll", EntryPoint = "ReadCardBas", CallingConvention = CallingConvention.StdCall)]
+        [DllImport("SSCard.dll",  CallingConvention = CallingConvention.StdCall)]
         private static extern long ReadCardBas(StringBuilder pOutBuff, int nOutBuffLen, StringBuilder pSignBuff, int nSignBuffLen);
         /// <summary>
         /// 1.3检验PIN码
@@ -2917,16 +2917,17 @@ ywCode);
                 int signlen = 4096;
                 WriteLog(sysdate + "  进入读社保卡基本信息");
                 long i = ReadCardBas(sbkinfo, outlen, signinfo, signlen);
-                WriteLog(sysdate + "  读社保卡基本信息出参" + sbkinfo.ToString());
+                MessageBox.Show(JsonConvert.SerializeObject(sbkinfo));
+                // WriteLog(sysdate + "   读社保卡基本信息出参" + sbkinfo.ToString());
+                // MessageBox.Show(sbkinfo.ToString());
                 if (i > 0)
                 {
-                    WriteLog(sysdate + "  用户" + CZYBH + " 读社保卡基本信息成功|" + sbkinfo.ToString());
-                    MessageBox.Show(sbkinfo.ToString());
+                    //WriteLog(sysdate + "  用户" + CZYBH + " 读社保卡基本信息成功|" + sbkinfo.ToString());
                     return new object[] { 0, 1, sbkinfo.ToString().Split('|') };
                 }
                 else
                 {
-                    WriteLog(sysdate + "  用户" + CZYBH + " 读社保卡基本信息失败|" + sbkinfo.ToString());
+                    //WriteLog(sysdate + "  用户" + CZYBH + " 读社保卡基本信息失败|" + sbkinfo.ToString());
                     return new object[] { 0, 0, sbkinfo.ToString() };
                 }
             }
