@@ -7854,6 +7854,8 @@ ywCode);
         #endregion
 
         #region 住院费用登记
+
+        private static DataSet ds1 = new DataSet();
         public static object[] YBZYSFDJ(object[] objParam)
         {
             string sysdate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -7950,7 +7952,8 @@ ywCode);
             strSql = string.Format(@" select y.ybxmbh, y.ybxmmc, a.z3djxx as dj,max(z3sequ) as pch
                 ,'B' as tpch
                 ,sum(case left(a.z3endv, 1) when '4' then -a.z3jzcs else a.z3jzcs end) as sl
-                ,sum(case left(a.z3endv, 1) when '4' then -a.z3jzcs* a.z3djxx else a.z3jzcs*z3djxx end) as je
+                ,sum(case left(a.z3endv, 1) when '4' then -a.z3jzcs* a.z3djxx else a.z3jzcs*z3djxx end) as je 
+                ,sum(case left(a.z3endv, 1) when '4' then -a.z3amnt else a.z3amnt end) as hisje
                 , a.z3item as yyxmbh, a.z3name as yyxmmc, min(isnull(dgysbm,z3empn)) as ysdm, min(isnull(ysxm,a.z3kdys)) as ysxm
 				,min(isnull(ybksdm,z3ksno)) as ksdm, min(isnull(ybksmc,b2ejnm)) as ksmc
                 , z3sfno as sfno, y.sfxmzldm as ybsfxmzldm, y.sflbdm as ybsflbdm,max(a.z3date) as yysj,y.sfxmdjdm,y.gg,y.dw,y.dffbz,y.cysm,y.clsm,sum(case LEFT(a.z3endv,1) when '4' then -z3jzje else z3jzje end) jzje
@@ -7975,12 +7978,15 @@ ywCode);
             List<string> liybxmmc = new List<string>();
             List<string> liybsflb = new List<string>();
             List<dynamic> feedetails = new List<dynamic>();
+            decimal ybscje = 0;
+            decimal fyzje = 0;
+            string cecfh = "";
+            int m = 0;
             if (ds.Tables[0].Rows.Count > 0)
             {
                 StringBuilder strMsg = new StringBuilder();
                 int index = 1;
 
-                int m = 0;
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
                     if (dr["ybxmbh"] == DBNull.Value)
@@ -8022,6 +8028,7 @@ ywCode);
                         string hcxm = "";//耗材新码
                         string zcffbz1 = "1";
                         string sfzybfwn = "";
+                        cecfh = pch;
                         string cysm = Convert.ToString(dr["cysm"]);
                         string clsm = Convert.ToString(dr["clsm"]);
                         liyyxmbh.Add(yyxmbh);
@@ -8029,6 +8036,7 @@ ywCode);
                         liybxmbm.Add(ybxmbh);
                         liybxmmc.Add(ybxmmc);
                         liybsflb.Add(sflb);
+                        ybscje += decimal.Parse(je.ToString());
                         index++;
 
                         #region 入参
@@ -8103,68 +8111,7 @@ ywCode);
                         };
 
                         feedetails.Add(zysfdj_Feedetail);
-                        #region 补差操作
-                        string byzje = ds.Tables[0].Compute("sum(jzje)", "true").ToString();
-                        string ybzje = ds.Tables[0].Compute("sum(je)", "true").ToString();
-                        decimal sfje = Math.Round(decimal.Parse(byzje), 4);
-                        decimal scfy = Math.Round(decimal.Parse(ybzje), 4);
-                        decimal xcje = Math.Round(sfje - scfy, 4);
-                        string cxreq = DateTime.Now.ToString("ddHHmmssfff");
-                        if ((Math.Abs(Math.Round((sfje - scfy), 2, MidpointRounding.AwayFromZero)) > 0) && (m != 9))
-                        {
-                            m = 9;
-                            liyyxmbh.Add(yyxmbh);
-                            liyyxmmc.Add(yyxmmc + "医保差额");
-                            liybxmbm.Add(ybxmbh);
-                            liybxmmc.Add(ybxmmc + "医保差额");
-                            liybsflb.Add(sflb);
-                            index++;
-                            WriteLog(sysdate + "医保补差  |" + sfje + "|" + scfy + "|" + Math.Round((scfy - sfje)) + "|" + Math.Abs(Math.Round((scfy - sfje), 4)) + "m: " + m.ToString());
-                            dynamic chaedy = new
-                            {
-                                feedetl_sn = pch + cxreq,
-                                init_feedetl_sn = sl < 0 ? tpch : "",
-                                mdtrt_id = ybjzlsh,
-                                drord_no = "",
-                                psn_no = grbh,
-                                med_type = yllb,
-                                fee_ocur_time = fysj,
-                                med_list_codg = ybxmbh,//yyxmbh
-                                medins_list_codg = yyxmbh,
-                                det_item_fee_sumamt = xcje.ToString(),
-                                cnt = "1",
-                                pric = xcje.ToString(),
-                                bilg_dept_codg = dqksdm,
-                                bilg_dept_name = dqksmc,
-                                bilg_dr_codg = dqysdm,
-                                bilg_dr_name = dqysxm,
-                                acord_dept_codg = "",
-                                acord_dept_name = "",
-                                orders_dr_code = "",
-                                orders_dr_name = "",
-                                hosp_appr_flag = "1",
-                                tcmdrug_used_way = dffbz,
-                                etip_flag = "",
-                                etip_hosp_code = "",
-                                dscg_tkdrug_flag = "",
-                                matn_fee_flag = "",
-                                memo = "",
-                                expContent = zyExp
-                            };
 
-                            #region 记录上传费用信息
-                            strSql = string.Format(@"insert into ybcfmxscindr(jzlsh,jylsh,xm,kh,ybjzlsh,cfrq,yysfxmbm,yysfxmmc,sfxmzxbm,sfxmzxmc,
-                                                    dj,sl,je,jbr,sysdate,sflb,sfxmdj,dqxmxh,ybcfh) values(
-                                                    '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}',
-                                                    '{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}')",
-                                             jzlsh, JYLSH, xm, kh, ybjzlsh, fysj, yyxmbh, yyxmmc + "医保差额", ybxmbh, ybxmmc,
-                                              Math.Round((sfje - scfy), 4), 1, Math.Round((sfje - scfy), 4), jbr, sysdate, sflb, ybxmdj, index - 1, pch);
-                            liSQL.Add(strSql);
-
-                            feedetails.Add(chaedy);
-                            #endregion
-                        }
-                        #endregion
 
 
                         strSql = string.Format(@"insert into ybcfmxscindr(jzlsh,jylsh,xm,kh,ybjzlsh,cfrq,yysfxmbm,yysfxmmc,sfxmzxbm,sfxmzxmc,
@@ -8182,8 +8129,89 @@ ywCode);
             }
             else
                 return new object[] { 0, 0, "无费用明细" };
+
             ds.Dispose();
             #endregion
+            if (ds1.Tables.Count > 0)
+            {
+                if (ds1.Tables[0].Rows.Count > 0)
+                {
+                    fyzje = decimal.Parse(ds.Tables[0].Compute("sum(hisje)", "true").ToString());
+                    string byzje = ds.Tables[0].Compute("sum(hisje)", "true").ToString();
+                    string ybzje = ds1.Tables[0].Rows[0]["ybscysze"].ToString();
+                    if (byzje != ybzje)
+                    {
+                        #region 补差操作
+                        JObject jfee = JObject.Parse(JsonConvert.SerializeObject(feedetails[feedetails.Count - 1]));
+
+                        decimal sfje = Math.Round(decimal.Parse(byzje), 4);
+                        decimal scfy = Math.Round(decimal.Parse(ybzje), 4);
+                        decimal xc = sfje - scfy;
+                        if (xc < 0)
+                        {
+                            xc = 0m;
+                        }
+                        //decimal num = scfy > Math.Round(scfy, 2) ? (scfy + 0.01m) : scfy;
+                        //decimal xcje = Math.Round(sfje - num, 2, MidpointRounding.AwayFromZero);
+                        string cxreq = DateTime.Now.ToString("ddHHmmssfff");
+                        liyyxmbh.Add(jfee["medins_list_codg"].ToString());
+                        liyyxmmc.Add("医保差额");
+                        liybxmbm.Add(jfee["med_list_codg"].ToString());
+                        liybxmmc.Add("医保差额");
+                        liybsflb.Add(jfee["med_list_codg"].ToString());
+                        WriteLog(sysdate + "医保补差  |" + sfje + "|" + scfy + "|" + Math.Round((scfy - sfje)) + "|" + Math.Abs(Math.Round((scfy - sfje), 4)) + "m: " + m.ToString() + "医保上传差额：" + xc);
+                        dynamic chaedy = new
+                        {
+                            feedetl_sn = jfee["feedetl_sn"].ToString() + "CE",
+                            init_feedetl_sn = jfee["init_feedetl_sn"].ToString(),
+                            mdtrt_id = jfee["mdtrt_id"].ToString(),
+                            drord_no = jfee["drord_no"].ToString(),
+                            psn_no = jfee["psn_no"].ToString(),
+                            med_type = jfee["med_type"].ToString(),
+                            fee_ocur_time = jfee["fee_ocur_time"].ToString(),
+                            med_list_codg = jfee["med_list_codg"].ToString(),//yyxmbh
+                            medins_list_codg = jfee["medins_list_codg"].ToString(),
+                            det_item_fee_sumamt = xc.ToString(),
+                            cnt = "1",
+                            pric = xc.ToString(),
+                            bilg_dept_codg = jfee["bilg_dept_codg"].ToString(),
+                            bilg_dept_name = jfee["bilg_dept_name"].ToString(),
+                            bilg_dr_codg = jfee["bilg_dr_codg"].ToString(),
+                            bilg_dr_name = jfee["bilg_dr_name"].ToString(),
+                            acord_dept_codg = "",
+                            acord_dept_name = "",
+                            orders_dr_code = "",
+                            orders_dr_name = "",
+                            hosp_appr_flag = "1",
+                            tcmdrug_used_way = jfee["tcmdrug_used_way"].ToString(),
+                            etip_flag = "",
+                            etip_hosp_code = "",
+                            dscg_tkdrug_flag = "",
+                            matn_fee_flag = "",
+                            memo = "",
+                            expContent = jfee["expContent"].ToString()
+                        };
+
+                        #region 记录上传费用信息
+                        if (xc > 0)
+                        {
+                            strSql = string.Format(@"insert into ybcfmxscindr(jzlsh,jylsh,xm,kh,ybjzlsh,cfrq,yysfxmbm,yysfxmmc,sfxmzxbm,sfxmzxmc,
+                                                    dj,sl,je,jbr,sysdate,sflb,sfxmdj,dqxmxh,ybcfh) values(
+                                                    '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}',
+                                                    '{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}')",
+                                                           jzlsh, JYLSH, xm, kh, ybjzlsh, jfee["fee_ocur_time"].ToString(), jfee["medins_list_codg"].ToString(), "医保差额", jfee["med_list_codg"].ToString(), "医保差额",
+                                                            xc, 1, xc, jbr, sysdate, jfee["med_list_codg"].ToString(), "1", feedetails.Count, cecfh);//Math.Round((sfje - scfy), 2, MidpointRounding.AwayFromZero)
+                            liSQL.Add(strSql);
+                        }
+
+                        feedetails.Add(chaedy);
+                        #endregion
+                        #endregion
+                    }
+                }
+            }
+
+
 
             #region 费用上传
             List<dynamic> list_detail = new List<dynamic>();
@@ -8502,6 +8530,9 @@ ywCode);
                     WriteLog(sysdate + "无费用撤销或已经撤销完成");
                     return new object[] { 0, 0, "无费用撤销或已经撤销完成" };
                 }
+                string sqlStr = @"select  sum(je) as ybscysze from ybcfmxscfhdr where jzlsh='{0}' and cxbz=1 and isnull(ybdjh,'')='' and yyxmmc not like '%医保差额%'";
+                sqlStr = string.Format(sqlStr, jzlsh);
+                ds1 = CliUtils.ExecuteSql("sybdj", "cmd", sqlStr, CliUtils.fLoginDB, true, CliUtils.fCurrentProject);
 
                 #region 医保登记信息
                 strSql = string.Format("select * from ybmzzydjdr a where a.jzlsh = '{0}' and jzbz='z' and a.cxbz = 1", jzlsh);
@@ -9502,7 +9533,9 @@ ywCode);
                 DQJBBZ = objParam[10].ToString();    //地区级别标志
                 string jysj = Convert.ToDateTime(sysdate).ToString("yyyyMMddHHmmss");
                 //交易流水号 
-
+                //取消出院登记           
+                object[] objQXCYDJ = { ybjzlsh, grbh };
+                objQXCYDJ = YBCYCX(objQXCYDJ);
                 #region 入参
                 string zyjscxJson = string.Empty;
                 /*
@@ -9576,7 +9609,7 @@ ywCode);
                                                 left join ybmzzydjdr b on a.jzlsh = b.jzlsh and a.cxbz=b.cxbz
                                                 left join zy03dw c on a.jzlsh=c.z3zyno and a.djhin=c.z3jshx and c.z3endv like '1%'
                                                 where a.jzlsh = '{0}'  
-                                                and a.djhin = '{1}' and a.cxbz = 1  ", jzlsh, djh);
+                                                and ( a.djh = '{1}' or a.djhin='{1}') and a.cxbz = 1  ", jzlsh, djh);
                 DataSet ds = CliUtils.ExecuteSql("sybdj", "cmd", strSql, CliUtils.fLoginDB, true, CliUtils.fCurrentProject);
                 if (ds.Tables[0].Rows.Count == 0)
                     return new object[] { 0, 0, "该患者无医保结算信息" };
@@ -9593,7 +9626,9 @@ ywCode);
                 string jslsh = dr["jslsh"].ToString();
                 DQJBBZ = dr["dqjbbz"].ToString();    //地区级别标志
                 fphx = dr["z3fphx"].ToString();
-
+                //取消出院登记           
+                object[] objQXCYDJ = { ybjzlsh, grbh };
+                objQXCYDJ = YBCYCX(objQXCYDJ);
                 #region 入参
                 string zyjscxJson = string.Empty;
                 /*
@@ -9629,10 +9664,10 @@ ywCode);
                                         select jzlsh,djhin,djh,jylsh,yblx,'0','{2}',jbr,kh,bzbm,bzmc,zhsybz,ztjsbz,tcqh,qtybfy,zbxje,zhzbxje,zhxjzffy,ybjzlsh,grbh,xm,ryzjlx,zjhm,xb,mz,csrq,nl,xzlx,yldylb,
                                          gwybz,jsrq,jzpzlx,yllb,ylfze,zffy,cxjfy,xxzfje,fhjbylfy,qfbzfy,tcjjzf,jbylbxtcjjzfbl,gwybzjjzf,qybcylbxjjzf,dbjjzf,dejjzf,mzjzfy,qtjjzf,jjzfze,grfdzje,zhzf,xjzf,yyfdfy,
                                          bcjsqzhye,grzhgjzfje,jslsh,jbjgbm,jsfs,jylx,ywzqh
-                                        from ybfyjsdr where jzlsh = '{0}' and djhin = '{1}' and cxbz = 1", jzlsh, djh, sysdate);
+                                        from ybfyjsdr where jzlsh = '{0}' and  (djh = '{1}' or  djhin='{1}' ) and cxbz = 1", jzlsh, djh, sysdate);
                     liSql.Add(strSql);
 
-                    strSql = string.Format(@"update ybfyjsdr set cxbz = 2 where jzlsh = '{0}' and djhin = '{1}' and cxbz = 1", jzlsh, djh);
+                    strSql = string.Format(@"update ybfyjsdr set cxbz = 2 where jzlsh = '{0}' and (djh = '{1}' or  djhin='{1}' ) and cxbz = 1", jzlsh, djh);
                     liSql.Add(strSql);
 
                     //撤销结算明细返回
@@ -10762,7 +10797,7 @@ left join YBICKXX c1 on j.grbh=c1.grbh
             s_path = string.IsNullOrEmpty(s_path) ? @"C:\Program Files (x86)\Infolight\EEP2012\EEPNetClient\FastReport" : s_path;
             string c_file = Application.StartupPath + @"\FastReport\YB\湖南新宁县中医医院国家医保住院结算单.frx";
             string s_file = s_path + @"\YB\湖南新宁县中医医院国家医保住院结算单.frx";
-            //CliUtils.DownLoad(s_file, c_file);   //下载远端AP SERVER报表文件  
+            CliUtils.DownLoad(s_file, c_file);   //下载远端AP SERVER报表文件  
 
             //检查报表文件是否存
             if (!File.Exists(c_file))
@@ -10988,7 +11023,7 @@ left join YBICKXX c1 on j.grbh=c1.grbh
             s_path = string.IsNullOrEmpty(s_path) ? @"C:\Program Files (x86)\Infolight\EEP2012\EEPNetClient\FastReport" : s_path;
             string c_file = Application.StartupPath + @"\FastReport\YB\湖南新宁县中医医院国家医保住院费用清单.frx";
             string s_file = s_path + @"\YB\湖南新宁县中医医院国家医保住院费用清单.frx";
-            //CliUtils.DownLoad(s_file, c_file);   //下载远端AP SERVER报表文件  
+            CliUtils.DownLoad(s_file, c_file);   //下载远端AP SERVER报表文件  
 
             //检查报表文件是否存
             if (!File.Exists(c_file))
@@ -11073,7 +11108,7 @@ left join YBICKXX c1 on j.grbh=c1.grbh
             //dsqd.Tables[0].TableName = "cmd";
             DataSet dsqd = new DataSet();
             string StrSql = @"  select f.yyxmdm,f.yyxmmc,ISNULL(a.gg,'') as gg,f.sl,f.dj,f.je,
-           convert(varchar, CONVERT(decimal(10,2),ROUND((f.fhzcfwje/f.je),4))*100)+'%'  as bxbl,
+           (case f.je when 0 then '0.00%' else   convert(varchar, CONVERT(decimal(10,2),ROUND((f.fhzcfwje/f.je),4))*100)+'%' end)  as bxbl,
             h.b5sfnm,f.fhzcfwje as bxje
             from ybcfmxscfhdr f
             left join bz05h h on h.b5sfno=f.sflb
@@ -11089,7 +11124,7 @@ left join YBICKXX c1 on j.grbh=c1.grbh
             s_path = string.IsNullOrEmpty(s_path) ? @"C:\Program Files (x86)\Infolight\EEP2012\EEPNetClient\FastReport" : s_path;
             string c_file = Application.StartupPath + @"\FastReport\YB\湖南新宁县中医医院国家医保住院费用清单.frx";
             string s_file = s_path + @"\YB\湖南新宁县中医医院国家医保住院费用清单.frx";
-            //CliUtils.DownLoad(s_file, c_file);   //下载远端AP SERVER报表文件  
+            CliUtils.DownLoad(s_file, c_file);   //下载远端AP SERVER报表文件  
 
             //检查报表文件是否存
             if (!File.Exists(c_file))
