@@ -1,0 +1,102 @@
+﻿<configuration>
+  <configSections>
+    <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="EEPNetClient.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+    </sectionGroup>
+  </configSections>
+  <appSettings>
+    <add key="CFPrint" value="Microsoft XPS Document Writer" />
+    <add key="my1" value="119" />
+    <add key="OrgCode" value="800309906" />
+    <add key="AreaName" value="江西永修县" />
+    <add key="AreaCode" value="360400" />
+  <add key="YBZDSCGH" value="040028"/>
+    <add key="OrgLevel" value="3" />
+    <add key="VisitType" value="2" />
+    <add key="AdmState" value="3" />
+    <!--入院状态：1:危,2:急,3:一般,9:其他-->
+ <add key="DbHelper" value="E49w+aW4zlusntQRD+y48ildmDETYI/Bm0jqd2opxx8UvpapM0XLuLc4xvfkHWoovV7mGpBBYoZeSlE68kWMVsbA6ZML4WT4"/>
+    <add key="CompClass" value="21" />
+    <!--补偿结算类别:22:正常分娩住院,14:慢病门诊,11:普通门诊,12:特殊病大额门诊,13:体格检查,21:普通住院,99:其他-->
+    <add key="BCXM" value="1401132243310800524412" />
+    <!--补偿项目：1401130925540800148757:普通门诊家庭帐户扣减,1312191715500800367665:外伤住院补偿,1401132243310800524412:普通住院补偿,1401132245390800524413:门诊慢性病补偿,1401171429450800542103:剖宫产补偿,1401171427290800542097:正常分娩补偿,1401232332220800169893:剖宫产补偿（双胞胎及多胎）,1401232333350800169894:阴道手术助产（双胞胎及多胎）,1401231722490800169645:外出检查补偿,1401232331020800169892:正常分娩补偿（双胞胎及多胎）,1401171430370800542104:阴道手术助产补偿-->
+    <add key="DDYLJGBH" value="6013" />
+    <!--<add key="wyxm" value="a|b;c|d"/>-->
+    <add key="ClientSettingsProvider.ServiceUri" value="" />
+  
+    <!--补偿结算类别:22:正常分娩住院,14:慢病门诊,11:普通门诊,12:特殊病大额门诊,13:体格检查,21:普通住院,99:其他-->
+    <add key="BCXM" value="1401132243310800524412"/>
+    <!--补偿项目：1401130925540800148757:普通门诊家庭帐户扣减,1312191715500800367665:外伤住院补偿,1401132243310800524412:普通住院补偿,1401132245390800524413:门诊慢性病补偿,1401171429450800542103:剖宫产补偿,1401171427290800542097:正常分娩补偿,1401232332220800169893:剖宫产补偿（双胞胎及多胎）,1401232333350800169894:阴道手术助产（双胞胎及多胎）,1401231722490800169645:外出检查补偿,1401232331020800169892:正常分娩补偿（双胞胎及多胎）,1401171430370800542104:阴道手术助产补偿-->
+    <add key="zy01h" value="zy01h"/>
+    <add key="zy03d" value="zy03d"/>
+    <!--add key="YLLB" value="11|普通门诊;12|二类门诊特殊慢性病;13|门诊特殊慢性病;14|药店购药;15|居民门诊;16|异地安置普通门诊;17|异地安置门诊特殊慢性病;18|慢性病病种门诊购药;19|高价药门诊;20|特殊住院;21|普通住院;22|单病种住院;23|异地安置转省内就医;24|市内转院;25|异地住院;26|异地安置转省外就医;27|转省内就医;28|转省外就医;29|本地非定点就医;30|异地非定点就医;31|家庭病床;32|特殊类型;33|重性精神病缓解期门诊;34|重性精神病急性期住院;35|特殊类型（血液透析）;36|外伤住院;37|学生意外伤害;38|学生意外死亡;39|重大疾病住院;41|急诊抢救;42|当日门诊;44|外地外伤;45|异地外伤;46|成年人意外伤害;51|生育门诊;52|生育住院;53|计生手术;54|生育并发症;71|工伤门诊;72|工伤住院;73|工伤旧伤复发;74|工伤康复住院"-->
+    <add key="YLLB" value="11|普通门诊;12|定点药店购药;13|门诊慢性病;14|单列特殊门诊;21|普通住院;22|市内转院;24|转市外就医;25|放化疗住院;26|精神病住院;28|外伤住院;34|脑瘫住院;41|生育住院(城居);61|工伤门诊;62|工伤住院;63|工伤康复;99|所有类别"/>
+    
+    <add key="BZ" value="01|普通病种;02|单病种;03|门诊特病;04|门诊慢性病;05|工伤病种;06|生育病种;07|其他病种;08|重大疾病病种;09|二类门诊慢性病"/>
+    <add key="SFXMZL" value="1|药品;2|诊疗项目;3|服务设施"/>
+    
+    <add key="SFLB" value="01|西药;02|中成药;03|中草药;21|检查费;22|特殊检查费;11|输氧费;10|手术费;09|化验费;13|输血费;27|诊查费;08|治疗费;32|特殊治疗费;19|护理费;17|床位费;41|医疗服务费;99|其他;42|麻醉费;43|安装器官;44|产前检查费;45|新生儿费;99|其他费用;92|挂号费;93|特殊材料费;18|材料费;95|注射费;96|接生费;97|取暖降温费;52|重大疾病用药;12|放射费"/>
+    <add key="CYYY" value="1|治愈;2|好转;3|未愈;4|死亡;5|转院;6|转外;9|其他"/>
+    <add key="ZHSYBZ" value="1|是;0|否"/>
+    <add key="ZTJSBZ" value="1|是;0|否"/>
+
+    <!--院感服务器IP-->
+    <add key="lcygurlip" value="http://192.168.42.235"/>
+    <add key="YBIP" value="10.79.197.30"/>
+    <add key="YBPORT" value="1443"/>
+    <add key="Gocent" value="Gocent"/>
+    <add key="DDYLJGBH" value="NJ100554"/>
+    <add key="DDYLJGMC" value="江苏省职工康复医院"/>
+    <add key="JSFDM" value="NJ100554"/>
+<add key="YBZDSCGH" value="040028"/>
+<!--医保自动上传住院费用工号-->
+<add key="ybdj" value="ybinterface_lib"/>
+<!--医保程序集名称-->
+<add key="ybdjmx" value="ybdjdrjj"/>
+<!--医保具体类名-->
+<add key="dzblemr" value="D:\新程序\EEPNetClient\OracleRun\HelloEmr.exe"/>
+<!--电子病历-->
+  </appSettings>
+  <system.runtime.remoting>
+    <application>
+
+      <client>
+        <wellknown type="Srvtools.LoginService, Srvtools" url="http://192.168.1.246:8989/Srvtools.rem" />
+        <wellknown type="Srvtools.ListenerService, Srvtools" url="http://192.168.1.246:8000/Srvtools.rem" />
+      </client>
+      <channels>
+        <channel ref="http">
+        </channel>
+      </channels>
+             <reserveServer>192.168.1.246:8989</reserveServer>
+    </application>
+  </system.runtime.remoting>
+  <userSettings>
+    <EEPNetClient.Properties.Settings>
+      <setting name="ProxyUser" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="ProxyPassword" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="ProxyRememberPassword" serializeAs="String">
+        <value>False</value>
+      </setting>
+    </EEPNetClient.Properties.Settings>
+  </userSettings>
+  <startup useLegacyV2RuntimeActivationPolicy="true">
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0" />
+  </startup>
+  <system.web>
+    <membership defaultProvider="ClientAuthenticationMembershipProvider">
+      <providers>
+        <add name="ClientAuthenticationMembershipProvider" type="System.Web.ClientServices.Providers.ClientFormsAuthenticationMembershipProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" />
+      </providers>
+    </membership>
+    <roleManager defaultProvider="ClientRoleProvider" enabled="true">
+      <providers>
+        <add name="ClientRoleProvider" type="System.Web.ClientServices.Providers.ClientRoleProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" cacheTimeout="86400" />
+      </providers>
+    </roleManager>
+  </system.web>
+</configuration>          
