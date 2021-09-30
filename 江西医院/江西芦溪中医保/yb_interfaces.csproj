@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\湖南新宁中医院his\EEPNetClient\Solution1\</OutputPath>
+    <OutputPath>..\..\..\湖南新宁中医院his\EEPNetClient\Solution1\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
