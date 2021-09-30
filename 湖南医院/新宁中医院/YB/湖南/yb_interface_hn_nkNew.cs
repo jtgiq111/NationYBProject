@@ -5392,6 +5392,7 @@ ywCode);
                 List<string> liybsflb = new List<string>();
                 List<dynamic> feedetail = new List<dynamic>();
                 int index = 1;
+                int m = 0;
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
                     #region 入参赋值
@@ -5468,6 +5469,80 @@ ywCode);
                         }
                     };
                     feedetail.Add(feed_kf);
+                    #endregion
+
+                    #region 门诊暂时屏蔽
+                    //#region 补差操作
+                    //string byzje = ds.Tables[0].Compute("sum(jzje)", "true").ToString();
+                    //string ybzje = ds.Tables[0].Compute("sum(je)", "true").ToString();
+                    //decimal zsfje = Math.Round(decimal.Parse(byzje), 4);
+                    //decimal zscfy = Math.Round(decimal.Parse(ybzje), 4);
+                    //decimal xcje = Math.Round(zsfje - zscfy, 4);
+                    //if ((Math.Abs(Math.Round((sfje - scfy), 2)) > 0) && (m != 9))
+                    //{
+                    //    m = 9;
+                    //    WriteLog(sysdate + "医保补差  |" + zsfje + "|" + scfy + "|" + Math.Round((zscfy - zsfje)) + "|" + Math.Abs(Math.Round((zscfy - zsfje), 4)) + "m: " + m.ToString());
+                    //    dynamic chaedy = new
+                    //    {
+                    //        feedetl_sn = feedetl_sn + seqNo,
+                    //        mdtrt_id = mdtrt_id,
+                    //        psn_no = psn_no,
+                    //        chrg_bchno = chrg_bchno,
+                    //        dise_codg = dise_codg,
+                    //        rxno = rxno,
+                    //        rx_circ_flag = rx_circ_flag,
+                    //        fee_ocur_time = fee_ocur_time,
+                    //        med_list_codg = med_list_codg,
+                    //        medins_list_codg = medins_list_codg,
+                    //        det_item_fee_sumamt = xcje,
+                    //        cnt = 1,
+                    //        pric = xcje,
+                    //        sin_dos_dscr = sin_dos_dscr,
+                    //        used_frqu_dscr = used_frqu_dscr,
+                    //        prd_days = prd_days,
+                    //        medc_way_sdcr = medc_way_sdcr,
+                    //        bilg_dept_codg = bilg_dept_codg,
+                    //        bilg_dept_name = bilg_dept_name,
+                    //        bilg_dr_codg = bilg_dr_codg,
+                    //        bilg_dr_name = bilg_dr_name,
+                    //        acord_dept_codg = acord_dept_codg,
+                    //        acord_dept_name = acord_dept_name,
+                    //        orders_dr_code = orders_dr_code,
+                    //        orders_dr_name = orders_dr_name,
+                    //        hosp_appr_flag = hosp_appr_flag,
+                    //        tcmdrug_used_way = tcmdrug_used_way,
+                    //        etip_flag = etip_flag,
+                    //        etip_hosp_code = etip_hosp_code,
+                    //        dscg_tkdrug_flag = dscg_tkdrug_flag,
+                    //        matn_fee_flag = matn_fee_flag,
+                    //        expContent = new
+                    //        {
+                    //            mcs_prov_code = clsm,
+                    //            tcmherb_prov_code = cysm,
+                    //        }
+                    //    };
+
+                    //    #region 记录上传费用信息
+                    //    strSql = string.Format(@"insert into ybcfmxscindr(jzlsh,jylsh,sfxmzl,ybcfh,djlsh,cfrq,yysfxmbm,yysfxmmc,dj,sl,
+                    //   je,ysbm,ksbh,jbr,sflb,grbh,xm,kh,cxbz,sysdate,
+                    //                     ybjzlsh,sfxmzxbm,sfxmzxmc,ysxm,ksmc,ybdjh) values(
+                    //                     '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}',
+                    //                     '{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}',
+                    //                     '{20}','{21}','{22}','{23}','{24}','{25}')",
+                    //                        jzlsh, JYLSH, sfxmzl, feedetl_sn, index, fee_ocur_time, medins_list_codg, yyxmmc + "医保差额", Math.Round((sfje - scfy), 4), 1, Math.Round((sfje - scfy), 4), bilg_dr_codg, bilg_dept_codg, CZYBH, sflbdm, grbh, xm, kh, 1, sysdate,
+                    //                        ybjzlsh, med_list_codg, ybxmmc, bilg_dr_name, bilg_dept_name, chrg_bchno);
+                    //    //strSql = string.Format(@"insert into ybcfmxscindr(jzlsh,jylsh,xm,kh,ybjzlsh,cfrq,yysfxmbm,yysfxmmc,sfxmzxbm,sfxmzxmc,
+                    //    //                            dj,sl,je,jbr,sysdate,sflb,sfxmdj,dqxmxh,ybcfh) values(
+                    //    //                            '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}',
+                    //    //                            '{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}')",
+                    //    //                 jzlsh, JYLSH, xm, kh, ybjzlsh, fysj, yyxmbh, yyxmmc + "医保差额", ybxmbh, ybxmmc,
+                    //    //                  Math.Round((sfje - scfy), 4), 1, Math.Round((sfje - scfy), 4), jbr, sysdate, sflb, ybxmdj, index - 1, pch);
+                    //    liSQL.Add(strSql);
+
+                    //    feedetail.Add(chaedy);
+                    //    #endregion
+                    //}
+                    //#endregion 
                     #endregion
 
                     #region 数据处理
@@ -7793,92 +7868,92 @@ ywCode);
                 return new object[] { 0, 0, "医保未连接或初始化失败" };
             }
 
-            try
+            //try
+            //{
+            string jzlsh = objParam[0].ToString();  //就诊流水号
+            string ztjssj = objParam[1].ToString(); //中途结算时间
+            string scrow = "100";
+            if (objParam.Length > 2)
+                scrow = objParam[2].ToString();  //上传条数
+            string cfrqbz = "0";
+            if (objParam.Length > 3)
+                cfrqbz = objParam[3].ToString(); //上传处方日期标志 0-正常处方日期，1-出院日期,2当前时间
+
+            CZYBH = CliUtils.fLoginUser;  //操作员工号
+            string jbr = CliUtils.fUserName;
+            string cfsj = Convert.ToDateTime(sysdate).ToString("yyyyMMddHHmmss");
+            string ztjssj1 = "";
+
+            if (!string.IsNullOrEmpty(ztjssj))
             {
-                string jzlsh = objParam[0].ToString();  //就诊流水号
-                string ztjssj = objParam[1].ToString(); //中途结算时间
-                string scrow = "100";
-                if (objParam.Length > 2)
-                    scrow = objParam[2].ToString();  //上传条数
-                string cfrqbz = "0";
-                if (objParam.Length > 3)
-                    cfrqbz = objParam[3].ToString(); //上传处方日期标志 0-正常处方日期，1-出院日期,2当前时间
+                ztjssj1 = Convert.ToDateTime(ztjssj).ToString("yyyy-MM-dd HH:mm:ss");
+            }
 
-                CZYBH = CliUtils.fLoginUser;  //操作员工号
-                string jbr = CliUtils.fUserName;
-                string cfsj = Convert.ToDateTime(sysdate).ToString("yyyyMMddHHmmss");
-                string ztjssj1 = "";
+            #region 判断是否医保登记
+            string strSql = string.Format("select a.*,b.z1ldat,b.z1date,b.z1lynm,z1cwid,z1bqxx,z1bqnm from ybmzzydjdr a left join zy01h b on a.jzlsh=b.z1zyno where a.jzlsh = '{0}' and jzbz='z' and a.cxbz = 1", jzlsh);
+            DataSet ds = CliUtils.ExecuteSql("sybdj", "cmd", strSql, CliUtils.fLoginDB, true, CliUtils.fCurrentProject);
+            if (ds == null || ds.Tables[0].Rows.Count == 0)
+                return new object[] { 0, 0, "无医保住院登记信息" };
 
-                if (!string.IsNullOrEmpty(ztjssj))
-                {
-                    ztjssj1 = Convert.ToDateTime(ztjssj).ToString("yyyy-MM-dd HH:mm:ss");
-                }
+            DataRow dr1 = ds.Tables[0].Rows[0];
+            string ybjzlsh = dr1["ybjzlsh"].ToString();  //医保就诊流水号
+            string grbh = dr1["grbh"].ToString();        //个人编号
+            string xm = dr1["xm"].ToString();            //姓名    
+            string kh = dr1["kh"].ToString();            //卡号
+            string ysdm = dr1["ysdm"].ToString();
+            string ysxm = dr1["ysxm"].ToString();
+            string ksbh = dr1["ksbh"].ToString();
+            string ksmc = dr1["ksmc"].ToString();
+            string tcqh = dr1["tcqh"].ToString();
+            string ybjzlsh_snyd = dr1["ybjzlsh_snyd"].ToString();
+            DQJBBZ = dr1["dqjbbz"].ToString();
+            string soldSystem = dr1["ybzl"].ToString();
+            string cyrq = dr1["z1ldat"].ToString();
+            string oldryrq = dr1["z1date"].ToString();
+            string cwh = dr1["cwh"].ToString();
+            string yllb = dr1["yllb"].ToString();
+            string bzbm = dr1["bzbm"].ToString();
+            string bzmc = dr1["bzmc"].ToString();
+            string z1lynm = dr1["z1lynm"].ToString();
+            string z1cwid = dr1["z1cwid"].ToString();
+            string z1bqxx = dr1["z1bqxx"].ToString();
+            string z1bqnm = dr1["z1bqnm"].ToString();
+            string ydrybz = dr1["ydrybz"].ToString();  //异地人员标志
+            if (cfrqbz.Equals("1") && string.IsNullOrEmpty(cyrq))
+                return new object[] { 0, 0, "患者未出院不能按出院日期上传费用明细" };
+            #endregion
 
-                #region 判断是否医保登记
-                string strSql = string.Format("select a.*,b.z1ldat,b.z1date,b.z1lynm,z1cwid,z1bqxx,z1bqnm from ybmzzydjdr a left join zy01h b on a.jzlsh=b.z1zyno where a.jzlsh = '{0}' and jzbz='z' and a.cxbz = 1", jzlsh);
-                DataSet ds = CliUtils.ExecuteSql("sybdj", "cmd", strSql, CliUtils.fLoginDB, true, CliUtils.fCurrentProject);
-                if (ds == null || ds.Tables[0].Rows.Count == 0)
-                    return new object[] { 0, 0, "无医保住院登记信息" };
+            List<string> liSQL = new List<string>();
+            #region 获取费用明细信息
 
-                DataRow dr1 = ds.Tables[0].Rows[0];
-                string ybjzlsh = dr1["ybjzlsh"].ToString();  //医保就诊流水号
-                string grbh = dr1["grbh"].ToString();        //个人编号
-                string xm = dr1["xm"].ToString();            //姓名    
-                string kh = dr1["kh"].ToString();            //卡号
-                string ysdm = dr1["ysdm"].ToString();
-                string ysxm = dr1["ysxm"].ToString();
-                string ksbh = dr1["ksbh"].ToString();
-                string ksmc = dr1["ksmc"].ToString();
-                string tcqh = dr1["tcqh"].ToString();
-                string ybjzlsh_snyd = dr1["ybjzlsh_snyd"].ToString();
-                DQJBBZ = dr1["dqjbbz"].ToString();
-                string soldSystem = dr1["ybzl"].ToString();
-                string cyrq = dr1["z1ldat"].ToString();
-                string oldryrq = dr1["z1date"].ToString();
-                string cwh = dr1["cwh"].ToString();
-                string yllb = dr1["yllb"].ToString();
-                string bzbm = dr1["bzbm"].ToString();
-                string bzmc = dr1["bzmc"].ToString();
-                string z1lynm = dr1["z1lynm"].ToString();
-                string z1cwid = dr1["z1cwid"].ToString();
-                string z1bqxx = dr1["z1bqxx"].ToString();
-                string z1bqnm = dr1["z1bqnm"].ToString();
-                string ydrybz = dr1["ydrybz"].ToString();  //异地人员标志
-                if (cfrqbz.Equals("1") && string.IsNullOrEmpty(cyrq))
-                    return new object[] { 0, 0, "患者未出院不能按出院日期上传费用明细" };
-                #endregion
+            string sWhere = "";
+            if (!string.IsNullOrEmpty(ztjssj))
+                sWhere = string.Format(@"and Convert(datetime,z3date)<'{0}' ", ztjssj1);
+            //                strSql = string.Format(@"select y.ybxmbh, y.ybxmmc, a.z3djxx as dj,a.z3sequ as pch
+            //                ,case left(a.z3endv, 1) when '4' then a.z3tseq  else '' end as tpch
+            //                ,case left(a.z3endv, 1) when '4' then -a.z3jzcs else a.z3jzcs end as sl
+            //                ,a.z3jzje as je
+            //                , a.z3item as yyxmbh, a.z3name as yyxmmc, min(isnull(dgysbm,z3empn)) as ysdm, min(isnull(ysxm,a.z3kdys)) as ysxm
+            //				,min(isnull(ybksdm,z3ksno)) as ksdm, min(isnull(ybksmc,b2ejnm)) as ksmc
+            //                , z3sfno as sfno, y.sfxmzldm as ybsfxmzldm, y.sflbdm as ybsflbdm,max(a.z3date) as yysj,y.sfxmdjdm,y.gg,y.dw,y.dffbz,y.cysm,y.clsm
+            //                from zy03d a 
+            //                left join ybhisdzdrnew y on a.z3item = y.hisxmbh 
+            //                left join yp01h h on a.z3item=y1ypno
+            //				left join bz02d on b2ejks=z3ksno
+            //				left join ybdgyszd on ysbm=z3empn
+            //				left join ybkszd on ksdm=z3ksno
+            //                where a.z3ybup is null and left(a.z3kind, 1) in ('2', '4') and isnull(a.z3jshx,'')=''  and a.z3zyno = '{0}'  {1}
+            //                group by y.ybxmbh, y.ybxmmc, a.z3djxx,a.z3djxx, a.z3item, a.z3name,a.z3sfno,y.sfxmzldm, y.sflbdm,y.sfxmdjdm,y.gg,y.dw,
+            //                (case left(a.z3endv, 1) when '4' then -a.z3jzcs else a.z3jzcs end),a.z3jzje,
+            //                (case left(a.z3endv, 1) when '4' then a.z3tseq  else '' end),z3sequ,y.dffbz,y.cysm,y.clsm ", jzlsh, sWhere);
 
-                List<string> liSQL = new List<string>();
-                #region 获取费用明细信息
-
-                string sWhere = "";
-                if (!string.IsNullOrEmpty(ztjssj))
-                    sWhere = string.Format(@"and Convert(datetime,z3date)<'{0}' ", ztjssj1);
-                //                strSql = string.Format(@"select y.ybxmbh, y.ybxmmc, a.z3djxx as dj,a.z3sequ as pch
-                //                ,case left(a.z3endv, 1) when '4' then a.z3tseq  else '' end as tpch
-                //                ,case left(a.z3endv, 1) when '4' then -a.z3jzcs else a.z3jzcs end as sl
-                //                ,a.z3jzje as je
-                //                , a.z3item as yyxmbh, a.z3name as yyxmmc, min(isnull(dgysbm,z3empn)) as ysdm, min(isnull(ysxm,a.z3kdys)) as ysxm
-                //				,min(isnull(ybksdm,z3ksno)) as ksdm, min(isnull(ybksmc,b2ejnm)) as ksmc
-                //                , z3sfno as sfno, y.sfxmzldm as ybsfxmzldm, y.sflbdm as ybsflbdm,max(a.z3date) as yysj,y.sfxmdjdm,y.gg,y.dw,y.dffbz,y.cysm,y.clsm
-                //                from zy03d a 
-                //                left join ybhisdzdrnew y on a.z3item = y.hisxmbh 
-                //                left join yp01h h on a.z3item=y1ypno
-                //				left join bz02d on b2ejks=z3ksno
-                //				left join ybdgyszd on ysbm=z3empn
-                //				left join ybkszd on ksdm=z3ksno
-                //                where a.z3ybup is null and left(a.z3kind, 1) in ('2', '4') and isnull(a.z3jshx,'')=''  and a.z3zyno = '{0}'  {1}
-                //                group by y.ybxmbh, y.ybxmmc, a.z3djxx,a.z3djxx, a.z3item, a.z3name,a.z3sfno,y.sfxmzldm, y.sflbdm,y.sfxmdjdm,y.gg,y.dw,
-                //                (case left(a.z3endv, 1) when '4' then -a.z3jzcs else a.z3jzcs end),a.z3jzje,
-                //                (case left(a.z3endv, 1) when '4' then a.z3tseq  else '' end),z3sequ,y.dffbz,y.cysm,y.clsm ", jzlsh, sWhere);
-
-                strSql = string.Format(@" select y.ybxmbh, y.ybxmmc, a.z3djxx as dj,max(z3sequ) as pch
+            strSql = string.Format(@" select y.ybxmbh, y.ybxmmc, a.z3djxx as dj,max(z3sequ) as pch
                 ,'B' as tpch
                 ,sum(case left(a.z3endv, 1) when '4' then -a.z3jzcs else a.z3jzcs end) as sl
                 ,sum(case left(a.z3endv, 1) when '4' then -a.z3jzcs* a.z3djxx else a.z3jzcs*z3djxx end) as je
                 , a.z3item as yyxmbh, a.z3name as yyxmmc, min(isnull(dgysbm,z3empn)) as ysdm, min(isnull(ysxm,a.z3kdys)) as ysxm
 				,min(isnull(ybksdm,z3ksno)) as ksdm, min(isnull(ybksmc,b2ejnm)) as ksmc
-                , z3sfno as sfno, y.sfxmzldm as ybsfxmzldm, y.sflbdm as ybsflbdm,max(a.z3date) as yysj,y.sfxmdjdm,y.gg,y.dw,y.dffbz,y.cysm,y.clsm
+                , z3sfno as sfno, y.sfxmzldm as ybsfxmzldm, y.sflbdm as ybsflbdm,max(a.z3date) as yysj,y.sfxmdjdm,y.gg,y.dw,y.dffbz,y.cysm,y.clsm,sum(case LEFT(a.z3endv,1) when '4' then -z3jzje else z3jzje end) jzje
                 from zy03d a 
                 left join ybhisdzdrnew y on a.z3item = y.hisxmbh 
                 left join yp01h h on a.z3item=y1ypno
@@ -7890,112 +7965,164 @@ ywCode);
                 y.dffbz,y.cysm,y.clsm
 				having sum(case left(a.z3endv, 1) when '4' then -a.z3jzcs else a.z3jzcs end) >0 ", jzlsh, sWhere);
 
-                ds.Tables.Clear();
-                ds = CliUtils.ExecuteSql("sybdj", "cmd", strSql, CliUtils.fLoginDB, true, CliUtils.fCurrentProject);
+            ds.Tables.Clear();
+            ds = CliUtils.ExecuteSql("sybdj", "cmd", strSql, CliUtils.fLoginDB, true, CliUtils.fCurrentProject);
 
-                List<string> li_inputData = new List<string>();
-                List<string> liyyxmbh = new List<string>();
-                List<string> liyyxmmc = new List<string>();
-                List<string> liybxmbm = new List<string>();
-                List<string> liybxmmc = new List<string>();
-                List<string> liybsflb = new List<string>();
-                List<dynamic> feedetails = new List<dynamic>();
-                if (ds.Tables[0].Rows.Count > 0)
+            List<string> li_inputData = new List<string>();
+            List<string> liyyxmbh = new List<string>();
+            List<string> liyyxmmc = new List<string>();
+            List<string> liybxmbm = new List<string>();
+            List<string> liybxmmc = new List<string>();
+            List<string> liybsflb = new List<string>();
+            List<dynamic> feedetails = new List<dynamic>();
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                StringBuilder strMsg = new StringBuilder();
+                int index = 1;
+
+                int m = 0;
+                foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    StringBuilder strMsg = new StringBuilder();
-                    int index = 1;
-                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    if (dr["ybxmbh"] == DBNull.Value)
                     {
-                        if (dr["ybxmbh"] == DBNull.Value)
+                        strMsg.Append("项目代码：[" + dr["yyxmbh"].ToString() + "]，名称：[" + dr["yyxmmc"].ToString() + "]未对照，不能上传！\r\n");
+                    }
+                    else
+                    {
+                        string xmlb = dr["ybsfxmzldm"].ToString(); // 收费项目种类代码 
+                        string sflb = dr["ybsflbdm"].ToString();     // 收费类别代码
+                        string ybxmbh = dr["ybxmbh"].ToString();
+                        string ybxmmc = dr["ybxmmc"].ToString();
+                        string yyxmbh = dr["yyxmbh"].ToString();
+                        string yyxmmc = dr["yyxmmc"].ToString();
+                        string ybxmdj = dr["sfxmdjdm"].ToString();
+                        string pch = dr["pch"].ToString();
+                        string tpch = dr["tpch"].ToString();
+                        string dffbz = dr["dffbz"].ToString();
+                        double dj = Convert.ToDouble(dr["dj"]);
+                        double sl = Convert.ToDouble(dr["sl"]);
+                        double je = Convert.ToDouble(dr["je"]);
+                        string fysj = Convert.ToDateTime(dr["yysj"].ToString()).ToString("yyyy-MM-dd HH:mm:ss");
+                        string gg = dr["gg"].ToString();
+                        string jx = "";
+                        string jldw = dr["dw"].ToString();
+                        string dqysdm = dr["ysdm"].ToString();
+                        string dqysxm = dr["ysxm"].ToString();
+                        string dqksdm = dr["ksdm"].ToString();
+                        string dqksmc = dr["ksmc"].ToString();
+                        string yfyl = "";
+                        string ybcfh = jzlsh.Substring(4, 4) + DateTime.Now.ToString("yyMMddHHmmss") + index.ToString().PadLeft(3, '0');
+                        string ypjldw = dr["dw"].ToString();
+                        decimal mcyl = 1;
+                        string pd = "qd";
+                        string yf = "";
+                        string dw = "";
+                        string txts = "";
+                        string sfxmxm = "";//收费项目新码
+                        string hcxm = "";//耗材新码
+                        string zcffbz1 = "1";
+                        string sfzybfwn = "";
+                        string cysm = Convert.ToString(dr["cysm"]);
+                        string clsm = Convert.ToString(dr["clsm"]);
+                        liyyxmbh.Add(yyxmbh);
+                        liyyxmmc.Add(yyxmmc);
+                        liybxmbm.Add(ybxmbh);
+                        liybxmmc.Add(ybxmmc);
+                        liybsflb.Add(sflb);
+                        index++;
+
+                        #region 入参
+                        /*
+                        （节点标识：feedetail）
+                            费用明细流水号
+                            原费用流水号
+                            就诊ID
+                            医嘱号
+                            人员编号
+                            医疗类别
+                            费用发生时间
+                            医疗目录编码
+                            医药机构目录编码
+                            明细项目费用总额
+                            数量
+                            单价
+                            开单科室编码
+                            开单科室名称
+                            开单医生编码
+                            开单医师姓名
+                            受单科室编码
+                            受单科室名称
+                            受单医生编码
+                            受单医生姓名
+                            医院审批标志
+                            中药使用方式
+                            外检标志
+                            外检医院编码
+                            出院带药标志
+                            生育费用标志
+                            备注
+
+                         */
+                        dynamic zyExp = new
                         {
-                            strMsg.Append("项目代码：[" + dr["yyxmbh"].ToString() + "]，名称：[" + dr["yyxmmc"].ToString() + "]未对照，不能上传！\r\n");
-                        }
-                        else
+                            mcs_prov_code = clsm,
+                            tcmherb_prov_code = cysm,
+                        };
+
+                        string seqNo = DateTime.Now.ToString("mmssfff");
+                        dynamic zysfdj_Feedetail = new
                         {
-                            string xmlb = dr["ybsfxmzldm"].ToString(); // 收费项目种类代码 
-                            string sflb = dr["ybsflbdm"].ToString();     // 收费类别代码
-                            string ybxmbh = dr["ybxmbh"].ToString();
-                            string ybxmmc = dr["ybxmmc"].ToString();
-                            string yyxmbh = dr["yyxmbh"].ToString();
-                            string yyxmmc = dr["yyxmmc"].ToString();
-                            string ybxmdj = dr["sfxmdjdm"].ToString();
-                            string pch = dr["pch"].ToString();
-                            string tpch = dr["tpch"].ToString();
-                            string dffbz = dr["dffbz"].ToString();
-                            double dj = Convert.ToDouble(dr["dj"]);
-                            double sl = Convert.ToDouble(dr["sl"]);
-                            double je = Convert.ToDouble(dr["je"]);
-                            string fysj = Convert.ToDateTime(dr["yysj"].ToString()).ToString("yyyy-MM-dd HH:mm:ss");
-                            string gg = dr["gg"].ToString();
-                            string jx = "";
-                            string jldw = dr["dw"].ToString();
-                            string dqysdm = dr["ysdm"].ToString();
-                            string dqysxm = dr["ysxm"].ToString();
-                            string dqksdm = dr["ksdm"].ToString();
-                            string dqksmc = dr["ksmc"].ToString();
-                            string yfyl = "";
-                            string ybcfh = jzlsh.Substring(4, 4) + DateTime.Now.ToString("yyMMddHHmmss") + index.ToString().PadLeft(3, '0');
-                            string ypjldw = dr["dw"].ToString();
-                            decimal mcyl = 1;
-                            string pd = "qd";
-                            string yf = "";
-                            string dw = "";
-                            string txts = "";
-                            string sfxmxm = "";//收费项目新码
-                            string hcxm = "";//耗材新码
-                            string zcffbz1 = "1";
-                            string sfzybfwn = "";
-                            string cysm = Convert.ToString(dr["cysm"]);
-                            string clsm = Convert.ToString(dr["clsm"]);
+                            feedetl_sn = pch + seqNo,
+                            init_feedetl_sn = sl < 0 ? tpch : "",
+                            mdtrt_id = ybjzlsh,
+                            drord_no = "",
+                            psn_no = grbh,
+                            med_type = yllb,
+                            fee_ocur_time = fysj,
+                            med_list_codg = ybxmbh,//yyxmbh
+                            medins_list_codg = yyxmbh,
+                            det_item_fee_sumamt = je.ToString(),
+                            cnt = sl.ToString(),
+                            pric = dj.ToString(),
+                            bilg_dept_codg = dqksdm,
+                            bilg_dept_name = dqksmc,
+                            bilg_dr_codg = dqysdm,
+                            bilg_dr_name = dqysxm,
+                            acord_dept_codg = "",
+                            acord_dept_name = "",
+                            orders_dr_code = "",
+                            orders_dr_name = "",
+                            hosp_appr_flag = "1",
+                            tcmdrug_used_way = dffbz,
+                            etip_flag = "",
+                            etip_hosp_code = "",
+                            dscg_tkdrug_flag = "",
+                            matn_fee_flag = "",
+                            memo = "",
+                            expContent = zyExp
+                        };
+
+                        feedetails.Add(zysfdj_Feedetail);
+                        #region 补差操作
+                        string byzje = ds.Tables[0].Compute("sum(jzje)", "true").ToString();
+                        string ybzje = ds.Tables[0].Compute("sum(je)", "true").ToString();
+                        decimal sfje = Math.Round(decimal.Parse(byzje), 4);
+                        decimal scfy = Math.Round(decimal.Parse(ybzje), 4);
+                        decimal xcje = Math.Round(sfje - scfy, 4);
+                        string cxreq = DateTime.Now.ToString("ddHHmmssfff");
+                        if ((Math.Abs(Math.Round((sfje - scfy), 2, MidpointRounding.AwayFromZero)) > 0) && (m != 9))
+                        {
+                            m = 9;
                             liyyxmbh.Add(yyxmbh);
-                            liyyxmmc.Add(yyxmmc);
+                            liyyxmmc.Add(yyxmmc + "医保差额");
                             liybxmbm.Add(ybxmbh);
-                            liybxmmc.Add(ybxmmc);
+                            liybxmmc.Add(ybxmmc + "医保差额");
                             liybsflb.Add(sflb);
                             index++;
-
-                            #region 入参
-                            /*
-                            （节点标识：feedetail）
-                                费用明细流水号
-                                原费用流水号
-                                就诊ID
-                                医嘱号
-                                人员编号
-                                医疗类别
-                                费用发生时间
-                                医疗目录编码
-                                医药机构目录编码
-                                明细项目费用总额
-                                数量
-                                单价
-                                开单科室编码
-                                开单科室名称
-                                开单医生编码
-                                开单医师姓名
-                                受单科室编码
-                                受单科室名称
-                                受单医生编码
-                                受单医生姓名
-                                医院审批标志
-                                中药使用方式
-                                外检标志
-                                外检医院编码
-                                出院带药标志
-                                生育费用标志
-                                备注
-
-                             */
-                            dynamic zyExp = new
+                            WriteLog(sysdate + "医保补差  |" + sfje + "|" + scfy + "|" + Math.Round((scfy - sfje)) + "|" + Math.Abs(Math.Round((scfy - sfje), 4)) + "m: " + m.ToString());
+                            dynamic chaedy = new
                             {
-                                mcs_prov_code = clsm,
-                                tcmherb_prov_code = cysm,
-                            };
-
-                            string seqNo = DateTime.Now.ToString("mmssfff");
-                            dynamic zysfdj_Feedetail = new
-                            {
-                                feedetl_sn = pch + seqNo,
+                                feedetl_sn = pch + cxreq,
                                 init_feedetl_sn = sl < 0 ? tpch : "",
                                 mdtrt_id = ybjzlsh,
                                 drord_no = "",
@@ -8004,9 +8131,9 @@ ywCode);
                                 fee_ocur_time = fysj,
                                 med_list_codg = ybxmbh,//yyxmbh
                                 medins_list_codg = yyxmbh,
-                                det_item_fee_sumamt = je.ToString(),
-                                cnt = sl.ToString(),
-                                pric = dj.ToString(),
+                                det_item_fee_sumamt = xcje.ToString(),
+                                cnt = "1",
+                                pric = xcje.ToString(),
                                 bilg_dept_codg = dqksdm,
                                 bilg_dept_name = dqksmc,
                                 bilg_dr_codg = dqysdm,
@@ -8025,150 +8152,80 @@ ywCode);
                                 expContent = zyExp
                             };
 
-                            feedetails.Add(zysfdj_Feedetail);
-
+                            #region 记录上传费用信息
                             strSql = string.Format(@"insert into ybcfmxscindr(jzlsh,jylsh,xm,kh,ybjzlsh,cfrq,yysfxmbm,yysfxmmc,sfxmzxbm,sfxmzxmc,
                                                     dj,sl,je,jbr,sysdate,sflb,sfxmdj,dqxmxh,ybcfh) values(
                                                     '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}',
                                                     '{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}')",
-                                                  jzlsh, JYLSH, xm, kh, ybjzlsh, fysj, yyxmbh, yyxmmc, ybxmbh, ybxmmc,
-                                                  dj, sl, je, jbr, sysdate, sflb, ybxmdj, index - 1, pch);
+                                             jzlsh, JYLSH, xm, kh, ybjzlsh, fysj, yyxmbh, yyxmmc + "医保差额", ybxmbh, ybxmmc,
+                                              Math.Round((sfje - scfy), 4), 1, Math.Round((sfje - scfy), 4), jbr, sysdate, sflb, ybxmdj, index - 1, pch);
                             liSQL.Add(strSql);
+
+                            feedetails.Add(chaedy);
                             #endregion
                         }
+                        #endregion
+
+
+                        strSql = string.Format(@"insert into ybcfmxscindr(jzlsh,jylsh,xm,kh,ybjzlsh,cfrq,yysfxmbm,yysfxmmc,sfxmzxbm,sfxmzxmc,
+                                                    dj,sl,je,jbr,sysdate,sflb,sfxmdj,dqxmxh,ybcfh) values(
+                                                    '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}',
+                                                    '{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}')",
+                                              jzlsh, JYLSH, xm, kh, ybjzlsh, fysj, yyxmbh, yyxmmc, ybxmbh, ybxmmc,
+                                              dj, sl, je, jbr, sysdate, sflb, ybxmdj, index - 1, pch);
+                        liSQL.Add(strSql);
+                        #endregion
                     }
-                    if (!string.IsNullOrEmpty(strMsg.ToString()))
-                        return new object[] { 0, 0, strMsg.ToString() };
+                }
+                if (!string.IsNullOrEmpty(strMsg.ToString()))
+                    return new object[] { 0, 0, strMsg.ToString() };
+            }
+            else
+                return new object[] { 0, 0, "无费用明细" };
+            ds.Dispose();
+            #endregion
+
+            #region 费用上传
+            List<dynamic> list_detail = new List<dynamic>();
+            int iscRow = int.Parse(scrow); // 每交上传条数
+            int iTemp = 0;
+            int mxindex = 0;
+            string Err = string.Empty;
+            #region 分段上传
+            foreach (dynamic inputData3 in feedetails)
+            {
+                if (iTemp <= iscRow)
+                {
+                    list_detail.Add(inputData3);
+                    iTemp++;
                 }
                 else
-                    return new object[] { 0, 0, "无费用明细" };
-                ds.Dispose();
-                #endregion
-
-                #region 费用上传
-                List<dynamic> list_detail = new List<dynamic>();
-                int iscRow = int.Parse(scrow); // 每交上传条数
-                int iTemp = 0;
-                int mxindex = 0;
-                string Err = string.Empty;
-                #region 分段上传
-                foreach (dynamic inputData3 in feedetails)
-                {
-                    if (iTemp <= iscRow)
-                    {
-                        list_detail.Add(inputData3);
-                        iTemp++;
-                    }
-                    else
-                    {
-                        if (ydrybz.Equals("1"))
-                            JYLSH = YBJGBH + DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(100).ToString().PadLeft(4, '0');
-                        WriteLog(sysdate + "  " + jzlsh + " 进入住院费用明细上传(分段)...");
-
-                        string zysfdjJson = string.Empty;
-
-                        dynamic input = new
-                        {
-                            feedetail = list_detail
-                        };
-
-                        zysfdjJson = JsonConvert.SerializeObject(input);
-                        WriteLog(sysdate + "  住院费用上传(分段)|入参JSON|" + zysfdjJson);
-                        int i = YBServiceRequest("2301", input, ref Err);
-                        if (i != 1)
-                        {
-                            object[] objFYMXCX = { ybjzlsh, JYLSH, jbr, grbh, xm, kh, tcqh, ybjzlsh_snyd, DQJBBZ };
-                            NYBZYCFMXSCCX(objFYMXCX);
-                            WriteLog(sysdate + "  " + jzlsh + " 住院费用上传(分段)失败|" + Err.ToString());
-                            return new object[] { 0, 0, "住院费用上传(分段)失败|" + Err.ToString() };
-                        }
-                        string dataRs = Err.ToString();
-                        WriteLog(sysdate + "  住院费用上传(分段)|出参Json|" + dataRs);
-                        JObject jobj = JsonConvert.DeserializeObject(dataRs) as JObject; //获取响应数据json
-
-                        JToken jtRet = jobj["result"];
-                        foreach (JToken jt in jtRet)
-                        {
-                            /*
-                                费用明细流水号
-                                明细项目费用总额
-                                数量
-                                单价
-                                定价上限金额
-                                自付比例
-                                全自费金额
-                                超限价金额
-                                先行自付金额
-                                符合政策范围金额
-                                收费项目等级
-                                医疗收费项目类别
-                                基本药物标志
-                                医保谈判药品标志
-                                儿童用药标志
-                                目录特项标志
-                                限制使用标志
-                                直报标志
-                                备注
-                             */
-                            string fhjylsh = jt["feedetl_sn"].ToString();
-                            string fhje = jt["det_item_fee_sumamt"].ToString();
-                            string fhsl = jt["cnt"].ToString();
-                            string fhdj = jt["pric"].ToString();
-                            string fhdjsxje = jt["pric_uplmt_amt"].ToString();
-                            string fhzfbl = jt["selfpay_prop"].ToString();
-                            string fhqzfje = jt["fulamt_ownpay_amt"].ToString();
-                            string fhcxjje = jt["overlmt_amt"].ToString();
-                            string fhxxzfje = jt["preselfpay_amt"].ToString();
-                            string fhfhzcfwnje = jt["inscp_scp_amt"].ToString();
-                            string fhsfxmdj = jt["chrgitm_lv"].ToString();
-                            string fhsfxmlb = jt["med_chrgitm_type"].ToString();
-                            string fhjbywbs = jt["bas_medn_flag"].ToString();
-                            string fhybtpypbz = jt["hi_nego_drug_flag"].ToString();
-                            string fhetyybz = jt["chld_medc_flag"].ToString();
-                            string fhmltxbz = jt["list_sp_item_flag"].ToString();
-                            string fhxzsybz = jt["lmt_used_flag"].ToString();
-                            string fhzbbz = jt["drt_reim_flag"].ToString();
-                            string fhbz = jt["memo"].ToString();
-                            strSql = string.Format(@"insert into ybcfmxscfhdr(jzlsh,jylsh,ybjzlsh,yyxmdm,yyxmmc,yybxmbh,ybxmmc,je,zlje,zfje,
-                                                        cxjzfje,sflb,sfxmdj,qezfbz,zlbl,xj,bz,dqxmxh,ybcfh,dj,sl, djsxje, xxzfje, fhzcfwje,jjywbz,ybtbypbz,etyybz,mltsbz,zbbz) 
-                                                        values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}',
-                                                        '{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}','{20}','{21}','{22}','{23}','{24}','{25}','{26}','{27}','{28}')",
-                                                     jzlsh, JYLSH, ybjzlsh, liyyxmbh[mxindex], liyyxmmc[mxindex], liybxmbm[mxindex], liybxmmc[mxindex], fhje, fhxxzfje, fhqzfje,
-                                                     fhcxjje, liybsflb[mxindex], fhsfxmdj, fhxzsybz, fhzfbl, "", fhbz, mxindex + 1, fhjylsh, fhdj, fhsl, fhdjsxje, fhxxzfje, fhfhzcfwnje, fhjbywbs, fhybtpypbz, fhetyybz, fhmltxbz, fhzbbz);
-                            liSQL.Add(strSql);
-                            mxindex++;
-                        }
-                        iTemp = 1;
-                        list_detail.Clear();
-                        list_detail.Add(inputData3);
-                    }
-                }
-                #endregion
-
-                #region 明细不足100条时，一次性上传
-                if (iTemp > 0)
                 {
                     if (ydrybz.Equals("1"))
-                        WriteLog(sysdate + "  " + jzlsh + " 住院费用上传(补传、一次性上传)...");
+                        JYLSH = YBJGBH + DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(100).ToString().PadLeft(4, '0');
+                    WriteLog(sysdate + "  " + jzlsh + " 进入住院费用明细上传(分段)...");
+
                     string zysfdjJson = string.Empty;
+
                     dynamic input = new
                     {
                         feedetail = list_detail
                     };
+
                     zysfdjJson = JsonConvert.SerializeObject(input);
-                    WriteLog(sysdate + " 住院费用上传(补传、一次性上传)|入参|" + zysfdjJson);
+                    WriteLog(sysdate + "  住院费用上传(分段)|入参JSON|" + zysfdjJson);
                     int i = YBServiceRequest("2301", input, ref Err);
                     if (i != 1)
                     {
                         object[] objFYMXCX = { ybjzlsh, JYLSH, jbr, grbh, xm, kh, tcqh, ybjzlsh_snyd, DQJBBZ };
                         NYBZYCFMXSCCX(objFYMXCX);
-                        WriteLog(sysdate + "  " + jzlsh + " 住院费用上传(补传、一次性上传)失败|" + Err.ToString());
-                        return new object[] { 0, 0, "住院费用上传(补传、一次性上传)失败|" + Err.ToString() };
-
+                        WriteLog(sysdate + "  " + jzlsh + " 住院费用上传(分段)失败|" + Err.ToString());
+                        return new object[] { 0, 0, "住院费用上传(分段)失败|" + Err.ToString() };
                     }
                     string dataRs = Err.ToString();
-                    WriteLog(sysdate + "  住院费用上传(补传、一次性上传)|出参Json|" + dataRs);
-                    JObject jobj = JsonConvert.DeserializeObject(dataRs) as JObject; //获取响应数据json 
+                    WriteLog(sysdate + "  住院费用上传(分段)|出参Json|" + dataRs);
+                    JObject jobj = JsonConvert.DeserializeObject(dataRs) as JObject; //获取响应数据json
+
                     JToken jtRet = jobj["result"];
                     foreach (JToken jt in jtRet)
                     {
@@ -8221,39 +8278,122 @@ ywCode);
                         liSQL.Add(strSql);
                         mxindex++;
                     }
-
+                    iTemp = 1;
+                    list_detail.Clear();
+                    list_detail.Add(inputData3);
                 }
-                #endregion
+            }
+            #endregion
 
-                #endregion
-
-                #region 本地数据操作
-                strSql = string.Format(@"update zy03d set z3ybup = '{0}' where z3ybup is null and LEFT(z3kind,1)=2 and z3zyno = '{1}' ", JYLSH, jzlsh);
-                if (!string.IsNullOrEmpty(ztjssj))
-                    strSql += string.Format(@"and Convert(datetime,z3date)<'{0}' ", ztjssj1);
-                liSQL.Add(strSql);
-                object[] obj = liSQL.ToArray();
-                obj = CliUtils.CallMethod("sybdj", "BatExecuteSql", obj);
-
-                if (obj[1].ToString() == "1")
+            #region 明细不足100条时，一次性上传
+            if (iTemp > 0)
+            {
+                if (ydrybz.Equals("1"))
+                    WriteLog(sysdate + "  " + jzlsh + " 住院费用上传(补传、一次性上传)...");
+                string zysfdjJson = string.Empty;
+                dynamic input = new
                 {
-                    WriteLog(sysdate + "    住院费用上传成功|本地数据操作成功|");
-                    return new object[] { 0, 1, JYLSH };
-                }
-                else
+                    feedetail = list_detail
+                };
+                zysfdjJson = JsonConvert.SerializeObject(input);
+                WriteLog(sysdate + " 住院费用上传(补传、一次性上传)|入参|" + zysfdjJson);
+                int i = YBServiceRequest("2301", input, ref Err);
+                if (i != 1)
                 {
-                    WriteLog(sysdate + "    住院费用上传成功|本地数据操作失败|" + obj[2].ToString());
                     object[] objFYMXCX = { ybjzlsh, JYLSH, jbr, grbh, xm, kh, tcqh, ybjzlsh_snyd, DQJBBZ };
                     NYBZYCFMXSCCX(objFYMXCX);
-                    return new object[] { 0, 0, "住院费用上传失败|" + obj[2].ToString() };
+                    WriteLog(sysdate + "  " + jzlsh + " 住院费用上传(补传、一次性上传)失败|" + Err.ToString());
+                    return new object[] { 0, 0, "住院费用上传(补传、一次性上传)失败|" + Err.ToString() };
+
                 }
-                #endregion
+                string dataRs = Err.ToString();
+                WriteLog(sysdate + "  住院费用上传(补传、一次性上传)|出参Json|" + dataRs);
+                JObject jobj = JsonConvert.DeserializeObject(dataRs) as JObject; //获取响应数据json 
+                JToken jtRet = jobj["result"];
+                foreach (JToken jt in jtRet)
+                {
+                    /*
+                        费用明细流水号
+                        明细项目费用总额
+                        数量
+                        单价
+                        定价上限金额
+                        自付比例
+                        全自费金额
+                        超限价金额
+                        先行自付金额
+                        符合政策范围金额
+                        收费项目等级
+                        医疗收费项目类别
+                        基本药物标志
+                        医保谈判药品标志
+                        儿童用药标志
+                        目录特项标志
+                        限制使用标志
+                        直报标志
+                        备注
+                     */
+                    string fhjylsh = jt["feedetl_sn"].ToString();
+                    string fhje = jt["det_item_fee_sumamt"].ToString();
+                    string fhsl = jt["cnt"].ToString();
+                    string fhdj = jt["pric"].ToString();
+                    string fhdjsxje = jt["pric_uplmt_amt"].ToString();
+                    string fhzfbl = jt["selfpay_prop"].ToString();
+                    string fhqzfje = jt["fulamt_ownpay_amt"].ToString();
+                    string fhcxjje = jt["overlmt_amt"].ToString();
+                    string fhxxzfje = jt["preselfpay_amt"].ToString();
+                    string fhfhzcfwnje = jt["inscp_scp_amt"].ToString();
+                    string fhsfxmdj = jt["chrgitm_lv"].ToString();
+                    string fhsfxmlb = jt["med_chrgitm_type"].ToString();
+                    string fhjbywbs = jt["bas_medn_flag"].ToString();
+                    string fhybtpypbz = jt["hi_nego_drug_flag"].ToString();
+                    string fhetyybz = jt["chld_medc_flag"].ToString();
+                    string fhmltxbz = jt["list_sp_item_flag"].ToString();
+                    string fhxzsybz = jt["lmt_used_flag"].ToString();
+                    string fhzbbz = jt["drt_reim_flag"].ToString();
+                    string fhbz = jt["memo"].ToString();
+                    strSql = string.Format(@"insert into ybcfmxscfhdr(jzlsh,jylsh,ybjzlsh,yyxmdm,yyxmmc,yybxmbh,ybxmmc,je,zlje,zfje,
+                                                        cxjzfje,sflb,sfxmdj,qezfbz,zlbl,xj,bz,dqxmxh,ybcfh,dj,sl, djsxje, xxzfje, fhzcfwje,jjywbz,ybtbypbz,etyybz,mltsbz,zbbz) 
+                                                        values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}',
+                                                        '{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}','{20}','{21}','{22}','{23}','{24}','{25}','{26}','{27}','{28}')",
+                                             jzlsh, JYLSH, ybjzlsh, liyyxmbh[mxindex], liyyxmmc[mxindex], liybxmbm[mxindex], liybxmmc[mxindex], fhje, fhxxzfje, fhqzfje,
+                                             fhcxjje, liybsflb[mxindex], fhsfxmdj, fhxzsybz, fhzfbl, "", fhbz, mxindex + 1, fhjylsh, fhdj, fhsl, fhdjsxje, fhxxzfje, fhfhzcfwnje, fhjbywbs, fhybtpypbz, fhetyybz, fhmltxbz, fhzbbz);
+                    liSQL.Add(strSql);
+                    mxindex++;
+                }
+
             }
-            catch (Exception error)
+            #endregion
+
+            #endregion
+
+            #region 本地数据操作
+            strSql = string.Format(@"update zy03d set z3ybup = '{0}' where z3ybup is null and LEFT(z3kind,1)=2 and z3zyno = '{1}' ", JYLSH, jzlsh);
+            if (!string.IsNullOrEmpty(ztjssj))
+                strSql += string.Format(@"and Convert(datetime,z3date)<'{0}' ", ztjssj1);
+            liSQL.Add(strSql);
+            object[] obj = liSQL.ToArray();
+            obj = CliUtils.CallMethod("sybdj", "BatExecuteSql", obj);
+
+            if (obj[1].ToString() == "1")
             {
-                WriteLog(sysdate + "  住院费用上传|接口异常|" + error.ToString());
-                return new object[] { 0, 2, "Error:" + error.Message };
+                WriteLog(sysdate + "    住院费用上传成功|本地数据操作成功|");
+                return new object[] { 0, 1, JYLSH };
             }
+            else
+            {
+                WriteLog(sysdate + "    住院费用上传成功|本地数据操作失败|" + obj[2].ToString());
+                object[] objFYMXCX = { ybjzlsh, JYLSH, jbr, grbh, xm, kh, tcqh, ybjzlsh_snyd, DQJBBZ };
+                NYBZYCFMXSCCX(objFYMXCX);
+                return new object[] { 0, 0, "住院费用上传失败|" + obj[2].ToString() };
+            }
+            #endregion
+            //}
+            //catch (Exception error)
+            //{
+            //    WriteLog(sysdate + "  住院费用上传|接口异常|" + error.ToString());
+            //    return new object[] { 0, 2, "Error:" + error.Message };
+            //}
         }
         #endregion
 
@@ -10505,10 +10645,10 @@ left join YBICKXX c1 on j.grbh=c1.grbh
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = newdt.NewRow();
-                    if (dt.Rows[i]["polItemName"].ToString() == "冲减段")
-                    {
-                        continue;
-                    }
+                    //if (dt.Rows[i]["polItemName"].ToString()=="冲减段")
+                    //{
+                    //    continue;
+                    //}
                     for (int j = 0; j < dt.Columns.Count; j++)
                     {
                         if (dt.Columns[j].ColumnName == "fyhj")
