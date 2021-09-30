@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F0102E9D-60B1-4E7E-83A9-5CB1314D8AF5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ybinterface_auto</RootNamespace>
+    <AssemblyName>ybinterface_auto</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>D:\新程序\EEPNetClient\ybscAuto\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bitbug_favicon1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ybinterface_lib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\新程序\EEPNetClient\Solution1\ybinterface_lib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DEncrypt.cs" />
+    <Compile Include="Forms\Frmfeedetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frmfeedetail.Designer.cs">
+      <DependentUpon>Frmfeedetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_ybmxsc_gs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ybmxsc_gs.Designer.cs">
+      <DependentUpon>Frm_ybmxsc_gs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_ybmxsc_th.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ybmxsc_th.Designer.cs">
+      <DependentUpon>Frm_ybmxsc_th.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_ybmxsc_ts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ybmxsc_ts.Designer.cs">
+      <DependentUpon>Frm_ybmxsc_ts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IWork.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="Work.cs" />
+    <Compile Include="YBConstant\outParams_fymx.cs" />
+    <Compile Include="YBConstant\outParams_js.cs" />
+    <Compile Include="YBDLL\ybinterface_lib_th.cs" />
+    <Compile Include="YBDLL\ybinterface_lib_ts.cs" />
+    <Compile Include="Frm_ybmxsc_yt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ybmxsc_yt.Designer.cs">
+      <DependentUpon>Frm_ybmxsc_yt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YBDLL\ybinterface_lib_yt.cs" />
+    <EmbeddedResource Include="Forms\Frmfeedetail.resx">
+      <DependentUpon>Frmfeedetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_ybmxsc_gs.resx">
+      <DependentUpon>Frm_ybmxsc_gs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_ybmxsc_th.resx">
+      <DependentUpon>Frm_ybmxsc_th.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_ybmxsc_ts.resx">
+      <DependentUpon>Frm_ybmxsc_ts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Frm_ybmxsc_yt.resx">
+      <DependentUpon>Frm_ybmxsc_yt.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bitbug_favicon1.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
