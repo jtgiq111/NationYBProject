@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4FD045C3-AB6C-48F4-A99D-CB4D423BF56C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>yb_interfaces</RootNamespace>
+    <AssemblyName>yb_interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\湖南新宁中医院his\EEPNetClient\Solution1\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\EEPNetClient\Solution1\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoListView">
+      <HintPath>bin\Debug\AutoListView.dll</HintPath>
+    </Reference>
+    <Reference Include="Cassandra, Version=3.0.0.0, Culture=neutral, PublicKeyToken=10b231fbfc8c4b4d, processorArchitecture=MSIL">
+      <HintPath>packages\CassandraCSharpDriver.3.0.0\lib\net40\Cassandra.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport">
+      <HintPath>bin\Debug\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="InfoRemoteModule">
+      <HintPath>bin\Debug\InfoRemoteModule.dll</HintPath>
+    </Reference>
+    <Reference Include="LZ4, Version=1.0.5.93, Culture=neutral, PublicKeyToken=fd2bda0a70c5a705, processorArchitecture=MSIL">
+      <HintPath>packages\lz4net.1.0.5.93\lib\net40-client\LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\湖南新宁中医院his\EEPNetClient\Solution1\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Srvtools">
+      <HintPath>bin\Debug\Srvtools.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\portable-net40+sl4+win8+wp8\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="JX\Card\Baseinfo.cs" />
+    <Compile Include="JX\Card\CardInfo.cs" />
+    <Compile Include="JX\Card\Idetinfo.cs" />
+    <Compile Include="JX\Card\Insuinfo.cs" />
+    <Compile Include="JX\Card\ReadCardInfo.cs" />
+    <Compile Include="JX\Config\Item.cs" />
+    <Compile Include="JX\CY\CYinfo.cs" />
+    <Compile Include="JX\DZ\YBDetail.cs" />
+    <Compile Include="JX\Enum\EnumList.cs" />
+    <Compile Include="JX\Function.cs" />
+    <Compile Include="JX\InPatient\Diseinfo.cs" />
+    <Compile Include="JX\InPatient\Fee\InpatientFee.cs" />
+    <Compile Include="JX\InPatient\Mdtrtinfo.cs" />
+    <Compile Include="JX\InPatient\RegisterRequest.cs" />
+    <Compile Include="JX\Logs.cs" />
+    <Compile Include="JX\OutParam\cfmxscfhout.cs" />
+    <Compile Include="JX\OutParam\OutFeeInfo.cs" />
+    <Compile Include="JX\OutPatient\Fee\OutpatientFee.cs" />
+    <Compile Include="JX\OutPatient\Fee\OutPatientFeeNew.cs" />
+    <Compile Include="JX\OutPatient\Fee\OutpatientFeeOutParam.cs" />
+    <Compile Include="JX\OutPatient\Fee\OutPatientFeePre.cs" />
+    <Compile Include="JX\OutPatient\Setldetail.cs" />
+    <Compile Include="JX\OutPatient\Setlinfo.cs" />
+    <Compile Include="JX\OutPatient\YBBalanceInfo.cs" />
+    <Compile Include="JX\Register\OutpatientIn.cs" />
+    <Compile Include="JX\Register\Request.cs" />
+    <Compile Include="JX\RequestModel.cs" />
+    <Compile Include="JX\ResponseModel.cs" />
+    <Compile Include="JX\UI\Frmcbxxxz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frmcbxxxz.Designer.cs">
+      <DependentUpon>Frmcbxxxz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\FrmPXXZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\FrmPXXZ.Designer.cs">
+      <DependentUpon>FrmPXXZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\FrmmxbbNK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\FrmmxbbNK.Designer.cs">
+      <DependentUpon>FrmmxbbNK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\FrmxzJDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\FrmxzJDT.Designer.cs">
+      <DependentUpon>FrmxzJDT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\FrmYBMLSCXH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\FrmYBMLSCXH.Designer.cs">
+      <DependentUpon>FrmYBMLSCXH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\FrmYBQT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\FrmYBQT.Designer.cs">
+      <DependentUpon>FrmYBQT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\FrmYBRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\FrmYBRegister.Designer.cs">
+      <DependentUpon>FrmYBRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frmybxmdz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frmybxmdz.Designer.cs">
+      <DependentUpon>Frmybxmdz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frmzd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frmzd.Designer.cs">
+      <DependentUpon>Frmzd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_baSQSY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_baSQSY.designer.cs">
+      <DependentUpon>Frm_baSQSY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_baSQXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_baSQXN.Designer.cs">
+      <DependentUpon>Frm_baSQXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_czSQSY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_czSQSY.designer.cs">
+      <DependentUpon>Frm_czSQSY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_dkck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_dkck.designer.cs">
+      <DependentUpon>Frm_dkck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_dzbldjNK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_dzbldjNK.Designer.cs">
+      <DependentUpon>Frm_dzbldjNK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_dzXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_dzXN.Designer.cs">
+      <DependentUpon>Frm_dzXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_myjsjeXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_myjsjeXN.Designer.cs">
+      <DependentUpon>Frm_myjsjeXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_mzybjsfycxXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_mzybjsfycxXN.Designer.cs">
+      <DependentUpon>Frm_mzybjsfycxXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybbbrydrXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybbbrydrXN.designer.cs">
+      <DependentUpon>Frm_ybbbrydrXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybcxXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybcxXN.Designer.cs">
+      <DependentUpon>Frm_ybcxXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_YBdjFYscXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_YBdjFYscXN.Designer.cs">
+      <DependentUpon>Frm_YBdjFYscXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\frm_ybdzcxXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\frm_ybdzcxXN.Designer.cs">
+      <DependentUpon>frm_ybdzcxXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybdzXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybdzXN.Designer.cs">
+      <DependentUpon>Frm_ybdzXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybfymxXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybfymxXN.Designer.cs">
+      <DependentUpon>Frm_ybfymxXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybfyscXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybfyscXN.Designer.cs">
+      <DependentUpon>Frm_ybfyscXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybfyxxXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybfyxxXN.Designer.cs">
+      <DependentUpon>Frm_ybfyxxXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\frm_ybjsfycxXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\frm_ybjsfycxXN.Designer.cs">
+      <DependentUpon>frm_ybjsfycxXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybjsfzXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybjsfzXN.Designer.cs">
+      <DependentUpon>Frm_ybjsfzXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybjshz1XN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybjshz1XN.Designer.cs">
+      <DependentUpon>Frm_ybjshz1XN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybjshzXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybjshzXN.Designer.cs">
+      <DependentUpon>Frm_ybjshzXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybjsmxSQXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybjsmxSQXN.designer.cs">
+      <DependentUpon>Frm_ybjsmxSQXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybmzysdj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_ybmzysdj.designer.cs">
+      <DependentUpon>Frm_ybmzysdj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\UI\Frm_zyjsjeXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JX\UI\Frm_zyjsjeXN.Designer.cs">
+      <DependentUpon>Frm_zyjsjeXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JX\XZ\INPARAM.cs" />
+    <Compile Include="JX\XZ\yljgxxhq_INPARAM.cs" />
+    <Compile Include="JX\YB\ParamFYJS.cs" />
+    <Compile Include="JX\YB\ParamYBDK.cs" />
+    <Compile Include="JX\yb_interface_jx.cs" />
+    <Compile Include="IWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Work.cs" />
+    <Compile Include="yb_interface.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JX\UI\Frmcbxxxz.resx">
+      <DependentUpon>Frmcbxxxz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\FrmPXXZ.resx">
+      <DependentUpon>FrmPXXZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\FrmmxbbNK.resx">
+      <DependentUpon>FrmmxbbNK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\FrmxzJDT.resx">
+      <DependentUpon>FrmxzJDT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\FrmYBMLSCXH.resx">
+      <DependentUpon>FrmYBMLSCXH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\FrmYBQT.resx">
+      <DependentUpon>FrmYBQT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\FrmYBRegister.resx">
+      <DependentUpon>FrmYBRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frmybxmdz.resx">
+      <DependentUpon>Frmybxmdz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frmzd.resx">
+      <DependentUpon>Frmzd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_baSQSY.resx">
+      <DependentUpon>Frm_baSQSY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_baSQXN.resx">
+      <DependentUpon>Frm_baSQXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_czSQSY.resx">
+      <DependentUpon>Frm_czSQSY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_dkck.resx">
+      <DependentUpon>Frm_dkck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_dzbldjNK.resx">
+      <DependentUpon>Frm_dzbldjNK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_dzXN.resx">
+      <DependentUpon>Frm_dzXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_myjsjeXN.resx">
+      <DependentUpon>Frm_myjsjeXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_mzybjsfycxXN.resx">
+      <DependentUpon>Frm_mzybjsfycxXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_ybbbrydrXN.resx">
+      <DependentUpon>Frm_ybbbrydrXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_ybcxXN.resx">
+      <DependentUpon>Frm_ybcxXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_YBdjFYscXN.resx">
+      <DependentUpon>Frm_YBdjFYscXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\frm_ybdzcxXN.resx">
+      <DependentUpon>frm_ybdzcxXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_ybdzXN.resx">
+      <DependentUpon>Frm_ybdzXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_ybfymxXN.resx">
+      <DependentUpon>Frm_ybfymxXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_ybfyscXN.resx">
+      <DependentUpon>Frm_ybfyscXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_ybfyxxXN.resx">
+      <DependentUpon>Frm_ybfyxxXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\frm_ybjsfycxXN.resx">
+      <DependentUpon>frm_ybjsfycxXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_ybjsfzXN.resx">
+      <DependentUpon>Frm_ybjsfzXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_ybjshz1XN.resx">
+      <DependentUpon>Frm_ybjshz1XN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_ybjshzXN.resx">
+      <DependentUpon>Frm_ybjshzXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_ybjsmxSQXN.resx">
+      <DependentUpon>Frm_ybjsmxSQXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_ybmzysdj.resx">
+      <DependentUpon>Frm_ybmzysdj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JX\UI\Frm_zyjsjeXN.resx">
+      <DependentUpon>Frm_zyjsjeXN.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
