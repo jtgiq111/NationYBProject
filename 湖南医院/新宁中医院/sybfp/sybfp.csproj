@@ -40,7 +40,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\湖南新宁中医院his\EEPNetServer\</OutputPath>
+    <OutputPath>..\..\..\..\湖南新宁中医院his\EEPNetServer\SOLUTION1\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

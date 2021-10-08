@@ -7924,7 +7924,11 @@ ywCode);
             if (cfrqbz.Equals("1") && string.IsNullOrEmpty(cyrq))
                 return new object[] { 0, 0, "患者未出院不能按出院日期上传费用明细" };
             #endregion
-
+            #region 取消出院登记
+            //取消出院登记，预防预结算出院登记后撤销处方明细           
+            object[] objQXCYDJ = { ybjzlsh, grbh };
+            objQXCYDJ = YBCYCX(objQXCYDJ);
+            #endregion
             List<string> liSQL = new List<string>();
             #region 获取费用明细信息
 
@@ -8134,7 +8138,7 @@ ywCode);
             #endregion
             if (ds1.Tables.Count > 0)
             {
-                if (ds1.Tables[0].Rows.Count > 0)
+                if (ds1.Tables[0].Rows.Count > 0 && !string.IsNullOrEmpty(ds1.Tables[0].Rows[0][0].ToString()))
                 {
                     fyzje = decimal.Parse(ds.Tables[0].Compute("sum(hisje)", "true").ToString());
                     string byzje = ds.Tables[0].Compute("sum(hisje)", "true").ToString();
@@ -8522,7 +8526,7 @@ ywCode);
                 }
 
                 //是否存在撤销明细
-                strSql = string.Format(@"select * from ybcfmxscindr a where a.jzlsh = '{0}' and a.cxbz = 1 and isnull(ybdjh,'')=''", jzlsh);
+                strSql = string.Format(@"select * from ybcfmxscindr a where a.jzlsh = '{0}' and a.cxbz = 1 ", jzlsh);//and isnull(ybdjh,'')=''
                 ds.Tables.Clear();
                 ds = CliUtils.ExecuteSql("sybdj", "cmd", strSql, CliUtils.fLoginDB, true, CliUtils.fCurrentProject);
                 if (ds != null && ds.Tables[0].Rows.Count == 0)
@@ -8530,7 +8534,7 @@ ywCode);
                     WriteLog(sysdate + "无费用撤销或已经撤销完成");
                     return new object[] { 0, 0, "无费用撤销或已经撤销完成" };
                 }
-                string sqlStr = @"select  sum(je) as ybscysze from ybcfmxscfhdr where jzlsh='{0}' and cxbz=1 and isnull(ybdjh,'')='' and yyxmmc not like '%医保差额%'";
+                string sqlStr = @"select  isnull(sum(je),'0') as ybscysze from ybcfmxscfhdr where jzlsh='{0}' and cxbz=1 and isnull(ybdjh,'')='' and yyxmmc not like '%医保差额%'";
                 sqlStr = string.Format(sqlStr, jzlsh);
                 ds1 = CliUtils.ExecuteSql("sybdj", "cmd", sqlStr, CliUtils.fLoginDB, true, CliUtils.fCurrentProject);
 
@@ -9678,6 +9682,7 @@ ywCode);
                     strSql = string.Format(@"update ybfyjsmxdr set cxbz=2 where jslsh='{0}' and cxbz=1", jslsh);
                     liSql.Add(strSql);
 
+                    #region 撤销费用明细
                     //撤销费用明细
                     strSql = string.Format(@"INSERT INTO [dbo].[ybcfmxscfhdr]
                                        (jzlsh,jylsh,ybjzlsh,yyxmdm,yyxmmc,yybxmbh,ybxmmc,je,zlje,zfje,
@@ -9708,10 +9713,12 @@ ywCode);
                     //取消上传标志
                     strSql = string.Format(@"update zy03d set z3ybup = null where z3zyno = '{0}' and z3jshx='{1}'", jzlsh, djh);
                     liSql.Add(strSql);
+                    #endregion
                     object[] obj = liSql.ToArray();
                     obj = CliUtils.CallMethod("sybdj", "BatExecuteSql", obj);
                     if (obj[1].ToString() == "1")
                     {
+
                         WriteLog(sysdate + " 住院收费结算撤销成功|本地数据操作成功|");
                         return new object[] { 0, 1, "住院收费结算撤销成功" };
                     }
@@ -11158,24 +11165,22 @@ left join YBICKXX c1 on j.grbh=c1.grbh
 
             return new object[] { 0, 1, "医保提示：费用清单打印成功", "提示" };
         }
-		#endregion
+        #endregion
 
-		#region 将空值变为0
-		public static string getJeStr(string je)
-		{
-			if (string.IsNullOrEmpty(je))
-			{
-				return "0";
-			}
-			else
-			{
-				return je.ToString();
-			}
-		} 
-		#endregion
+        public static string getJeStr(string je)
+        {
+            if (string.IsNullOrEmpty(je))
+            {
+                return "0";
+            }
+            else
+            {
+                return je.ToString();
+            }
+        }
 
-		#region 门诊结算清单
-		public static object[] YBMZJSQD(object[] objParam)
+        #region 门诊结算清单
+        public static object[] YBMZJSQD(object[] objParam)
         {
             WriteLog("进入门诊结算单打印.....");
             try
