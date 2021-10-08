@@ -124,6 +124,15 @@ namespace yb_interfaces
         /// <returns></returns>
         [DllImport("SSCard.dll", EntryPoint = "GetQRBase", CallingConvention = CallingConvention.StdCall)]
         private static extern long GetQRBase(int nTimeout, StringBuilder pOutBuff, int nOutBuffLen, StringBuilder pSignBuff, int nSignBuffLen);
+        /// <summary>
+        /// 1.7读取电子凭证
+        /// </summary>
+        /// <param name="strUrl">业务请求地址 </param>
+        /// <param name="InData">交易请求数据</param>
+        /// <param name="OutData">交易返回数据 </param>
+        /// <returns></returns>
+        [DllImport("SSCard.dll", EntryPoint = "GetQRBase", CallingConvention = CallingConvention.StdCall)]
+        private static extern long NationEcTrans(StringBuilder strUrl, StringBuilder InData, StringBuilder OutData);
         #endregion
 
         #region 变量
@@ -2938,6 +2947,63 @@ ywCode);
         }
         #endregion
 
+        #region 1.7读电子凭证基本信息
+        private static string dzpzdeptId = "";
+        private static string dzpzdeptName = "";
+        private static string dkywcode = "";
+        public static object[] DDZPZJBXX(object[] objParam)
+        {
+            string sysdate = GetServerDateTime();
+            try
+            {
+                CZYBH = CliUtils.fLoginUser;  //用户工号
+                //入参
+                WriteLog(sysdate + "  用户" + CZYBH + " 进入读电子凭证基本信息...");
+                //string sbkinfo = "";
+                //string signinfo = "";
+                dynamic dzpcinput = new { 
+                    orgId=YBJGBH,
+                    transType="ec.query",
+                    data=new { 
+                      orgId=YBJGBH,
+                      businessType= YWBH,
+                      operatorId=CliUtils.fLoginUser.ToString(),
+                      operatorName=CliUtils.fUserName.ToString(),
+                      officeId="",
+                      officeName="",
+                      deviceType=""
+                    },
+                    extra=""
+                };
+                string inputdata = JsonConvert.SerializeObject(dzpcinput);
+                StringBuilder urls = new StringBuilder(dkUrl);
+                StringBuilder dzpzinfo = new StringBuilder(inputdata);
+                StringBuilder dzpzoutput = new StringBuilder(4096); 
+                WriteLog(sysdate + "  进入读电子凭证基本信息");
+
+                WriteLog(sysdate + "  进入读电子凭证基本信息入参"+inputdata);
+                long i = NationEcTrans(urls,dzpzinfo,dzpzoutput);
+                WriteLog(sysdate + "  读电子凭证基本信息出参" + dzpzinfo.ToString());
+                if (i > 0)
+                {
+                    WriteLog(sysdate + "  用户" + CZYBH + " 读电子凭证基本信息成功|" + dzpzinfo.ToString());
+                    MessageBox.Show(dzpzinfo.ToString());
+                    return new object[] { 0, 1, dzpzinfo.ToString().Split('|') };
+                }
+                else
+                {
+                    WriteLog(sysdate + "  用户" + CZYBH + " 读电子凭证基本信息失败|" + dzpzinfo.ToString());
+                    return new object[] { 0, 0, dzpzinfo.ToString() };
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog(sysdate + "  用户" + CZYBH + " 读电子凭证基本信息失败|" + ex.Message.ToString());
+                return new object[] { 0, 0, "读电子凭证基本信息失败|" + ex.Message };
+            }
+        }
+        #endregion
+
         #region 门诊读卡（读卡无变化 无需更改）
         public static object[] YBMZDK(object[] objParam)
         {
@@ -2983,9 +3049,28 @@ ywCode);
                         return obj;
                     }
                     info = obj[2] as string[];
-                    mdtrt_cert_type = "02";
+                    mdtrt_cert_type = "03";
                     mdtrt_cert_no = info[2];
                     card_sn = info[3];
+                    psn_cert_type = "01";
+                    certno = info[1];
+                    #endregion
+                }
+				else if (adkck.dzybFlag==DKType.电子凭证)
+				{
+                    #region 读电子凭证
+                    YWBH = "1101";
+                    obj = DDZPZJBXX(null);
+                    if (obj[1].ToString() != "1")
+                    {
+                        return obj;
+                    }
+                    mdtrt_cert_type = "01";
+                    mdtrt_cert_no = info[2];//ecToken>
+                    insuplc_admdvs = "";//insuOrg
+                    //card_sn = info[3];
+                    //psn_cert_type = "01";
+                    certno = info[1];//idNo
                     #endregion
                 }
 
