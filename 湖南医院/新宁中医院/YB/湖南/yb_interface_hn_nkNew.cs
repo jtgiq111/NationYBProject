@@ -255,6 +255,8 @@ namespace yb_interfaces
 		#endregion
 
 
+
+
 		#region HMACSHA1加密  将二进制数据直接转为字符串返回
 		/// <summary>
 		/// HMACSHA1加密
@@ -8667,7 +8669,7 @@ ywCode);
                 //string sfje = objParam[6].ToString();       //收费金额                
                 //string jsfs = objParam[7].ToString();       //结算方式
                 string jzlsh = objParam[0].ToString();   // 就诊流水号
-                string cyyy = objParam[1].ToString();    // 出院原因代码
+                string cyyy = objParam[1] == null ? "1" : objParam[1].ToString();    // 出院原因代码
                 string zhsybz = objParam[2].ToString();  // 账户使用标志（0或1）
                 string ztjsbz = objParam[3].ToString(); //中途结算标志
                 string cyrqsj = objParam[4].ToString();//出院日期
@@ -11165,22 +11167,24 @@ left join YBICKXX c1 on j.grbh=c1.grbh
 
             return new object[] { 0, 1, "医保提示：费用清单打印成功", "提示" };
         }
-        #endregion
+		#endregion
 
-        public static string getJeStr(string je)
-        {
-            if (string.IsNullOrEmpty(je))
-            {
-                return "0";
-            }
-            else
-            {
-                return je.ToString();
-            }
-        }
+		#region 转换金额 空值为0
+		public static string getJeStr(string je)
+		{
+			if (string.IsNullOrEmpty(je))
+			{
+				return "0";
+			}
+			else
+			{
+				return je.ToString();
+			}
+		} 
+		#endregion
 
-        #region 门诊结算清单
-        public static object[] YBMZJSQD(object[] objParam)
+		#region 门诊结算清单
+		public static object[] YBMZJSQD(object[] objParam)
         {
             WriteLog("进入门诊结算单打印.....");
             try
