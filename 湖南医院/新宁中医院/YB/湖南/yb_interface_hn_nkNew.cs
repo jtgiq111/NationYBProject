@@ -237,32 +237,32 @@ namespace yb_interfaces
 
         #region 新医保接口
 
+        #region 获取时间戳
         /// <summary>
         /// 获取时间戳
         /// </summary>
         /// <returns></returns>
         public static string GetTimeStamp()
-        {
-            //TimeSpan ts = DateTime.Now - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            //return Convert.ToInt64(ts.TotalSeconds).ToString();
-            //TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            //return Convert.ToInt64(ts.TotalMilliseconds).ToString();
-            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1, 0, 0, 0, 0));
-            long t = (DateTime.Now.Ticks - startTime.Ticks) / 10000;   //除10000调整为13位      
-            return t.ToString();
-        }
+		{
+			//TimeSpan ts = DateTime.Now - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+			//return Convert.ToInt64(ts.TotalSeconds).ToString();
+			//TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+			//return Convert.ToInt64(ts.TotalMilliseconds).ToString();
+			System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1, 0, 0, 0, 0));
+			long t = (DateTime.Now.Ticks - startTime.Ticks) / 10000;   //除10000调整为13位      
+			return t.ToString();
+		} 
+		#endregion
 
 
-
-
-        #region HMACSHA1加密  将二进制数据直接转为字符串返回
-        /// <summary>
-        /// HMACSHA1加密
-        /// </summary>
-        /// <param name="text">要加密的原串</param>
-        ///<param name="key">私钥</param>
-        /// <returns></returns>
-        public static string HMACSHA1Text(string text, string key)
+		#region HMACSHA1加密  将二进制数据直接转为字符串返回
+		/// <summary>
+		/// HMACSHA1加密
+		/// </summary>
+		/// <param name="text">要加密的原串</param>
+		///<param name="key">私钥</param>
+		/// <returns></returns>
+		public static string HMACSHA1Text(string text, string key)
         {
             //HMACSHA1加密
             HMACSHA1 hmacsha1 = new HMACSHA1();
