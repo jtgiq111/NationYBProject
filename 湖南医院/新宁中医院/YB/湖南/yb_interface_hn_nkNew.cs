@@ -11158,22 +11158,24 @@ left join YBICKXX c1 on j.grbh=c1.grbh
 
             return new object[] { 0, 1, "医保提示：费用清单打印成功", "提示" };
         }
-        #endregion
+		#endregion
 
-        public static string getJeStr(string je)
-        {
-            if (string.IsNullOrEmpty(je))
-            {
-                return "0";
-            }
-            else
-            {
-                return je.ToString();
-            }
-        }
+		#region 将空值变为0
+		public static string getJeStr(string je)
+		{
+			if (string.IsNullOrEmpty(je))
+			{
+				return "0";
+			}
+			else
+			{
+				return je.ToString();
+			}
+		} 
+		#endregion
 
-        #region 门诊结算清单
-        public static object[] YBMZJSQD(object[] objParam)
+		#region 门诊结算清单
+		public static object[] YBMZJSQD(object[] objParam)
         {
             WriteLog("进入门诊结算单打印.....");
             try
